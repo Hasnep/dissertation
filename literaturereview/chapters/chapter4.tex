@@ -1,0 +1,12 @@
+% !TeX root = ..\literaturereview.tex
+
+\section{Opening the black box}
+
+If deep neural networks are simply the combination of many simple mathematical operations in a seemingly random way, there may be a way to mathematically or statistically disentangle the meaning from the information in the network.
+Research carried out on \qt{inverting} a deep neural network that was trained on images in an attempt to reconstruct the original inputs found that each successive layer abstracts the data, but isolating the specific neurons responsible for specific objects or ideas was more difficult~\autocite{mahendran2014}.
+Sensitivity analysis has also been used to evaluate the importance of each input to an \ac{ANN} in the final output, and the results visualised as a decision tree where each branch represents a range of input values~\autocite[13]{cortez2013}.
+
+There appears to be no literature on using \acp{GP} as a way to better understand how deep learning algorithms work or as a way to understand their structure, although there has been a fierce debate over the advantages of both \acp{ANN} and \acp{GP} since at least the 1990s.
+\textcite[65--66]{rasmussen1997} gave evidence that \acp{GP} are a valid replacement for neural networks in nonlinear problems with fewer than 1000 datapoints, although due to advances in processing power, \ac{ANN} algorithms and \ac{GP} techniques, this recommendation will have changed.
+\textcite[25]{mackay1997} gave an example of \acp{GP} being used for binary classification, in a similar way to \acp{ANN}.
+When \ac{GPR} is compared to ML methods, the main advantages mentioned are usually faster convergence and confidence or credible intervals for the predictions, which ML cannot do~\autocite{herbrich2003}.
