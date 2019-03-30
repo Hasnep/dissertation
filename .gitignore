@@ -246,3 +246,6 @@ bibliography/sources/
 
 # vscode files
 .vscode/
+
+# backup files
+*.bak*
