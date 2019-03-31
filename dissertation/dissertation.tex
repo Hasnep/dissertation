@@ -1,9 +1,12 @@
-\documentclass[12pt]{article}
-\usepackage[a4paper, margin=1cm]{geometry}
+\documentclass[12pt, a4paper]{report}
+% \usepackage[a4paper]{geometry}
 \input{preamble.tex}
 \begin{document}
-\maketitle
-\input{chapters/plan.tex}
+\input{chapters/titlepage.tex}
+\input{chapters/abstract.tex}
+\tableofcontents
+\input{chapters/acknowledgements.tex}
 \input{chapters/chapter1.tex}
+\input{chapters/appendix.tex}
 \input{chapters/bibliography.tex}
 \end{document}

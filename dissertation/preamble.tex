@@ -2,7 +2,7 @@
 
 %% font encoding
 \usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
+\usepackage[T1]{fontenc}
 
 %% language settings
 \usepackage[UKenglish]{babel}
@@ -12,7 +12,7 @@
 
 %% Line spacing
 \usepackage{setspace}
-\setstretch{2}
+\setstretch{1.25}
 
 %% Quotes
 \usepackage{csquotes}
@@ -56,7 +56,7 @@
  date=year % remove months from bibliography
 ]{biblatex}
 \addbibresource{../bibliography/dissertation.bib}
-\DeclareNameAlias{sortname}{last-first} % bibliography show names as surname, then firstname
+\DeclareNameAlias{sortname}{family-given} % bibliography show names as surname, then firstname
 \renewbibmacro{in:}{} % remove the "in: " beforea journal's name
 \renewcommand{\UrlFont}{\small\tt} % make urls appear in a smaller font
 \usepackage{xpatch}
@@ -112,3 +112,6 @@
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{subcaption} % sub figures
+
+%% Fix appendix titles
+\usepackage[titletoc]{appendix}
