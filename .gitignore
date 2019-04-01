@@ -249,3 +249,6 @@ bibliography/sources/
 
 # backup files
 *.bak*
+
+# draft pdfs
+*-draft.pdf
