@@ -2,14 +2,7 @@
 
 \chapter{Opening the Black Box}
 
-Plan:
-\begin{itemize}
-	\item Previous papers on this subject
-	\item linear regression
-	\item Stepwise Regression
-    \item LASSO
-    \item Gaussian Processes
-\end{itemize}
+\section{Previous papers on this subject}
 
 \section{Regression}
 
@@ -20,13 +13,13 @@ One method of opening the black box of machine learning is to use regression wit
 In this case, \(x\), \(x^2\), \(\sin(x)\), \(\sin(2x)\), \(\sin(x/2)\), \(\cos(x)\), \(\cos(2x)\) and \(\cos(x/2)\) were used.
 This produced a complex model with many coefficients close to zero.
 
-% TODO: table of linear regression fit
+\begin{todo}table of linear regression fit\end{todo}
 
 \subsection{Stepwise regression}
 
 It is then possible to use stepwise regression to reduce the number of parameters in this linear model.
 
-% TODO: table of stepwise regression
+\begin{todo}table of stepwise regression\end{todo}
 
 While the relevant estimators \(x\) and \(\sin(x)\) were identified and their coefficients fairly accurately estimated, a few other variables were also identified as significant.
 This method is only likely to work with a perfect or near perfect fit with no noise, which is unrealistic for real applications.
@@ -45,7 +38,7 @@ We then use k-fold cross validation to find the optimal hyperparameter \(\lambda
 	\label{fig:lasso-lambda}
 \end{figure}
 
-% TODO: table of LASSO coefs
+\begin{todo}table of LASSO coefs\end{todo}
 
 \section{Gaussian process regression}
 

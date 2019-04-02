@@ -2,22 +2,6 @@
 
 \chapter{Deep Learning}
 
-\begin{itemize}
-    \item Machine Learning
-    \begin{itemize}
-        \item Neural Networks
-        \item Deep Learning
-    \end{itemize}
-    \item Introduce a simple example function
-	\item Possibly also use a more complex example?
-	\item Training a neural network
-	      \begin{itemize}
-		      \item Keras/Tensorflow
-		      \item Choosing the right size NN
-		      \item Order of the input points matters
-	      \end{itemize}
-\end{itemize}
-
 \section{Machine Learning}
 
 \subsection{Neural Networks}
@@ -26,10 +10,14 @@
 
 \subsection{Backpropagation}
 
+\begin{todo}Section on keras/tensorflow?\end{todo}
+
 \section{Example}
 
 To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x)\).
 256 evenly spread datapoints were taken from this function, and noise following \(\epsilon \distributed \normdist(0, 0.1)\) was applied.
+
+\begin{todo}Possibly also use a more complex example?\end{todo}
 
 \subsection{Training the neural network}
 
@@ -43,6 +31,8 @@ The result of this learning is seen in Figure~\ref{fig:ann-output}.
 	\label{fig:ann-output}
 \end{figure}
 
+\begin{todo}Information on choosing the right size NN\end{todo}
+
 \subsection{Ordering of the datapoints}
 
 Due to the form of stochastic gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm can more easily get stuck in a local minimum.
@@ -54,4 +44,3 @@ An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural 
 	\caption{The output of the same neural network trained on the same data but ordered differently.}
 	\label{fig:ann-order}
 \end{figure}
-
