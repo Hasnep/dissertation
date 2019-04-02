@@ -32,7 +32,7 @@
 %% Matrix transpose notation
 \newcommand*{\transpose}{^\mathsf{T}}
 
-%% Gausssian Process macro
+%% Gaussian Process macro
 \newcommand*{\gp}{\mathcal{GP}}
 
 %% Redefine vector macro
@@ -43,21 +43,21 @@
 
 %% Bibliography
 \usepackage[ %
- backend=biber, %
- sorting=nyt, % sort by name, year, title
- style=authoryear, % use (author, year) style
- maxbibnames=10, % maximum number of names to include in a bibliography entry
- minbibnames=10,
- maxcitenames=3, % maximum number of names to include in a citation
- mincitenames=1,
- giveninits=true, %
- uniquelist=false, % never disambiguate names
- uniquename=false, % never disambiguate names
- date=year % remove months from bibliography
+	backend=biber,
+	sorting=nyt, % sort by name, year, title
+	style=authoryear, % use (author, year) style
+	maxbibnames=10, % maximum number of names to include in a bibliography entry
+	minbibnames=10,
+	maxcitenames=3, % maximum number of names to include in a citation
+	mincitenames=1,
+	giveninits=true, %
+	uniquelist=false, % never disambiguate names
+	uniquename=false, % never disambiguate names
+	date=year % remove months from bibliography
 ]{biblatex}
 \addbibresource{../bibliography/dissertation.bib}
-\DeclareNameAlias{sortname}{family-given} % bibliography show names as surname, then firstname
-\renewbibmacro{in:}{} % remove the "in: " beforea journal's name
+\DeclareNameAlias{sortname}{family-given} % bibliography show names as surname, then first name
+\renewbibmacro{in:}{} % remove the "in: " before a journal's name
 \renewcommand{\UrlFont}{\small\tt} % make urls appear in a smaller font
 \usepackage{xpatch}
 \xpatchbibmacro{name:andothers}{\bibstring{andothers}}{\bibstring[\emph]{andothers}}{}{} % make et al. in italics
