@@ -1,8 +1,6 @@
 % !TeX root = ..\dissertation.tex
 
-\chapter{Literature Review}
-
-This is chapter two.
+\chapter{Deep Learning}
 
 \begin{itemize}
     \item Machine Learning
@@ -10,8 +8,50 @@ This is chapter two.
         \item Neural Networks
         \item Deep Learning
     \end{itemize}
-    \item Stepwise Regression
-    \item LASSO
-    \item Gaussian Processes
-    \item Previous papers on this subject
+    \item Introduce a simple example function
+	\item Possibly also use a more complex example?
+	\item Training a neural network
+	      \begin{itemize}
+		      \item Keras/Tensorflow
+		      \item Choosing the right size NN
+		      \item Order of the input points matters
+	      \end{itemize}
 \end{itemize}
+
+\section{Machine Learning}
+
+\subsection{Neural Networks}
+
+\subsubsection{The Neuron}
+
+\subsection{Backpropagation}
+
+\section{Example}
+
+To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x)\).
+256 evenly spread datapoints were taken from this function, and noise following \(\epsilon \distributed \normdist(0, 0.1)\) was applied.
+
+\subsection{Training the neural network}
+
+This function was learnt by a neural network with 8 layers, each with 10 neurons and the \(\tanh(\cdot)\) activation function, except for the final layer which used a linear activation function.
+The result of this learning is seen in Figure~\ref{fig:ann-output}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\caption{The output of the neural network.}
+	\label{fig:ann-output}
+\end{figure}
+
+\subsection{Ordering of the datapoints}
+
+Due to the form of stochastic gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm can more easily get stuck in a local minimum.
+An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural network has been trained on the example data.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\caption{The output of the same neural network trained on the same data but ordered differently.}
+	\label{fig:ann-order}
+\end{figure}
+
