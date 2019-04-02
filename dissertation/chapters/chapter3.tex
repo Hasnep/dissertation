@@ -47,7 +47,50 @@ An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural 
 
 
 \section{Regression}
+
+One method of opening the black box of machine learning is to use regression with many different predictors.
+
 \subsection{Linear regression}
+
+In this case, \(x\), \(x^2\), \(\sin(x)\), \(\sin(2x)\), \(\sin(x/2)\), \(\cos(x)\), \(\cos(2x)\) and \(\cos(x/2)\) were used.
+This produced a complex model with many coefficients close to zero.
+
+% TODO: table of linear regression fit
+
 \subsection{Stepwise regression}
+
+It is then possible to use stepwise regression to reduce the number of parameters in this linear model.
+
+% TODO: table of stepwise regression
+
+While the relevant estimators \(x\) and \(\sin(x)\) were identified and their coefficients fairly accurately estimated, a few other variables were also identified as significant.
+This method is only likely to work with a perfect or near perfect fit with no noise, which is unrealistic for real applications.
+
 \subsection{LASSO}
+
+Alternatively, we can use the Least Absolute Shrinkage and Selection Operator(LASSO) method to select the significant variables from the full model.
+The LASSO method constrains the sum of the absolute values of the model parameters, regularising the least influential parameters to zero.
+We vary the hyperparameter \(\lambda\) to change how regularised the coefficients are, as seen in Figure~\ref{fig:lasso-lambda}.
+We then use k-fold cross validation to find the optimal hyperparameter \(\lambda\).
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\caption{Changing the hyperparameter \(\lambda\).}
+	\label{fig:lasso-lambda}
+\end{figure}
+
+% TODO: table of LASSO coefs
+
 \section{Gaussian process regression}
+
+We can use Gaussian Processes (GPs) to try and model the output of the ANN.
+GPs are an extension of the multivariate normal distribution to an infinite dimensional process with a mean function and covariance function instead of a mean vector and covariance matrix.
+Because GPs are very flexible, applying a GP to the output of the ANN is likely to result in a close fit.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\caption{The fit of the GP.}
+	\label{fig:gp-fit}
+\end{figure}
