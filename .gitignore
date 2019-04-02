@@ -252,3 +252,6 @@ bibliography/sources/
 
 # draft pdfs
 *-draft.pdf
+
+# SVG vector images
+*.svg
