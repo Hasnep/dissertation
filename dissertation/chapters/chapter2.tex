@@ -14,6 +14,32 @@ Computers are able to do these tasks by combining information in nonlinear ways,
 	Each neuron performs a weighted sum 
 \end{todo}
 
+% In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
+% At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
+% Rosenblatt's biggest criticism of these models was that while a deterministic algorithm could perform a single task perfectly, unlike a biological brain, it could not be generalised to perform many tasks without a lot of substantial changes.
+% He described deterministic models of the brain as \qtc[387]{rosenblatt1958}{amount[ing] simply to logical contrivances for performing particular algorithms \cut{} in response to sequences of stimuli}.
+% Another way he wanted his synthetic brain to mirror biological brains was the property of redundancy, the ability to have pieces removed and still function, which is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
+% It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt1958}{would require only a refinement or modification of existing principles}, but Rosenblatt questioned this idea, believing that the problem needed a more fundamental re-evaluation.
+% At the heart of his idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
+% The perceptron was later generalised to the concept of an \qt{(artificial) neuron} (also called a \qt{unit}), which, instead of only giving a binary output, maps a finite number of real inputs to a single real output value.
+
+% Since the invention of \citeauthor{rosenblatt1957}'s perceptron, there have been many alternative models for neurons proposed, including fuzzy neurons, which allow truth values to be on a scale rather than a Boolean value~\autocite{gupta1991}; higher order neurons, which include second or higher products of the inputs~\autocite{rumelhart1986} and spiking neural networks, which use differential equations to emulate the electrical charge of biological neurons~\autocite{maass1997}.
+% We will only consider the simple neuron based on Rosenblatt's perceptron.
+
+A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function~\(\phi(\x)\).
+
+The stages of a neuron, seen in Figure~\ref{fig:neuron-example} are:
+\begin{enumerate}
+	\item For an input vector \(\vec{x} \in \reals^n\) and a weight vector \(\vec{w} \in \reals^n\), take a weighted sum of the inputs, called a \qt{linear combiner}.
+	      \[ \text{linear combiner} = \sum_{i=1}^{n}{x_i w_i} \]
+	\item Then, a bias \(b \in \reals{}\) is added, which translates the output to a suitable range.
+	      The bias controls how large the weighted sum needs to be to \qt{activate} the neuron, so this is called the pre-activation \((v)\).
+	      \[ \text{pre-activation} = v = \sum_{i=1}^{n}{x_i w_i} + b \]
+	\item Finally, an \qt{activation function} (or \qt{limiter function}) \(\phi(\x)\) is applied, which restricts the output to a range and introduces nonlinearity to the system.
+	      The activation function must be differentiable if the gradient descent method is used (see Section~\ref{ch:backpropagation}) as gradient descent relies on calculating the gradient of the error.
+	      \[ \text{neuron output} = y = \phi\left(\sum_{i=1}^{n}{x_i w_i} + b \right) \]
+\end{enumerate}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{example-image-golden.pdf}
@@ -21,7 +47,16 @@ Computers are able to do these tasks by combining information in nonlinear ways,
 	\label{fig:neuron-example}
 \end{figure}
 
-\subsection{Neural network layers and Backpropagation}
+\subsubsection{Activation functions}
+
+Early examples of artificial neurons were built in hardware with the output being a light that was either on or off.
+This is equivalent to the \(\operatorname{sign}(\x)\) function, which is now only used for binary classification problems.
+It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
+Commonly the sigmoid function \(S(x) = (1 + \exp(-x))^{-1}\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to vectors) are used.
+More recently, a commonly used activation function for deep learning (see Section~\ref{ch:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
+If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
+
+\subsection{Neural network layers and Backpropagation} \label{ch:backpropagation}
 
 \begin{todo}
 	Neurons are connected in layers. \\
@@ -68,7 +103,7 @@ This will converge to a solution in fewer steps, but takes significantly longer 
 Estimating the parameters of an \ac{ANN} using either type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
-\section{Deep Learning}
+\section{Deep Learning}\label{ch:deep-learning}
 
 \begin{todo}
 	DL is just ML with more layers
