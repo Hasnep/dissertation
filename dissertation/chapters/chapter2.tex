@@ -82,23 +82,23 @@ For a neural network with \(N\) weights
 	\item Update the weights \(\vec{w} \leftarrow \).
 \end{enumerate}
 
-To understand the backpropagation algorithm, consider a network with only one output neuron (such as in Figure~\ref{examplenn}), and consider its prediction for a specific datapoint in the training set.
-The squared error for this datapoint is \(\varepsilon = \left(y^\text{target} - y^\text{prediction}\right)^2\).
-The target is fixed, and we cannot directly change the prediction, so to reduce \(\varepsilon\), we can calculate the change we need to make to each weight to reduce the error the most.
-The prediction only depends on the outputs of the neurons on the previous layer and the weights connecting the layers.
-This same logic applies to all of the neurons in the network.
-Assuming that all the activation functions are differentiable, we can apply the chain rule repeatedly to calculate the gradient of the overall error with respect to each weight \(w_j\) in the network.
-This gradient
-\[ \Delta w_j = \pdv{\varepsilon(w_j)}{w_j} \]
-represents the change needed to weight \(w_j\) to most steeply increase the error, so the value \(-\Delta w_j\) is the direction that most steeply decreases the error.
-We scale this amount by a constant hyperparameter \(\eta\), called the \qt{learning rate}, and change each weight accordingly \(w_j = w_j - \eta \Delta w_j\).
-We perform this process for each weight, and then for each datapoint in the training dataset.
+% To understand the backpropagation algorithm, consider a network with only one output neuron (such as in Figure~\ref{examplenn}), and consider its prediction for a specific datapoint in the training set.
+% The squared error for this datapoint is \(\varepsilon = \left(y^\text{target} - y^\text{prediction}\right)^2\).
+% The target is fixed, and we cannot directly change the prediction, so to reduce \(\varepsilon\), we can calculate the change we need to make to each weight to reduce the error the most.
+% The prediction only depends on the outputs of the neurons on the previous layer and the weights connecting the layers.
+% This same logic applies to all of the neurons in the network.
+% Assuming that all the activation functions are differentiable, we can apply the chain rule repeatedly to calculate the gradient of the overall error with respect to each weight \(w_j\) in the network.
+% This gradient
+% \[ \Delta w_j = \pdv{\varepsilon(w_j)}{w_j} \]
+% represents the change needed to weight \(w_j\) to most steeply increase the error, so the value \(-\Delta w_j\) is the direction that most steeply decreases the error.
+% We scale this amount by a constant hyperparameter \(\eta\), called the \qt{learning rate}, and change each weight accordingly \(w_j = w_j - \eta \Delta w_j\).
+% We perform this process for each weight, and then for each datapoint in the training dataset.
 
-This type of method is called \qt{stochastic gradient descent} (also called \qt{online gradient descent} or \qt{iterative gradient descent}) because it does not calculate the true steepest gradient.
-Each datapoint moves the weights in a slightly different direction, so the optimisation process zigzags towards the optimum, rather than taking the steepest path.
-An alternative is \qt{batch gradient descent}, where the sum of the squared errors for all the training data is calculated and optimised.
-\[ \varepsilon(\vec{w}) = \frac{1}{2} \sum_{i}\left(y_i^\text{target} - y_i^\text{output}\right)^2 \]
-This will converge to a solution in fewer steps, but takes significantly longer to compute.
+% This type of method is called \qt{stochastic gradient descent} (also called \qt{online gradient descent} or \qt{iterative gradient descent}) because it does not calculate the true steepest gradient.
+% Each datapoint moves the weights in a slightly different direction, so the optimisation process zigzags towards the optimum, rather than taking the steepest path.
+% An alternative is \qt{batch gradient descent}, where the sum of the squared errors for all the training data is calculated and optimised.
+% \[ \varepsilon(\vec{w}) = \frac{1}{2} \sum_{i}\left(y_i^\text{target} - y_i^\text{output}\right)^2 \]
+% This will converge to a solution in fewer steps, but takes significantly longer to compute.
 
 Estimating the parameters of an \ac{ANN} using either type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
