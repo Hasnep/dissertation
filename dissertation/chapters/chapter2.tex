@@ -2,17 +2,13 @@
 
 \chapter{Machine Learning}
 
-We are in an age where there is so much data that in many cases, hand building a model to analyse, find patterns in and draw conclusions from the data is unfeasible, and so we use computers to analyse it in a process called \qt{Machine Learning} (ML)~\autocite[1]{murphy2012}.
-Computers are able to do these tasks by combining information in nonlinear ways, but become more powerful when the output of one nonlinear process is fed into another nonlinear process, abstracting the raw data to a higher level.
+So much data is collected that in many cases, hand building a model to analyse, find patterns in and draw conclusions from the data is unfeasible, so we can use computers to analyse it in a process called \ac{ML}~\autocite[1]{murphy2012}.
+Computers are able to perform predictive tasks by combining information in nonlinear ways, but can become much more powerful when the output of one nonlinear process is fed into another nonlinear process, abstracting the raw data to a higher level.
 \qtc[436]{lecun2015}{With the composition of enough such transformations, very complex functions can be learned}.
 
 \section{Neural Networks}
 
 \subsection{The Neuron}
-
-\begin{todo}
-	Each neuron performs a weighted sum 
-\end{todo}
 
 % In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
 % At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
@@ -28,7 +24,7 @@ Computers are able to do these tasks by combining information in nonlinear ways,
 
 A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function~\(\phi(\x)\).
 
-The stages of a neuron, seen in Figure~\ref{fig:neuron-example} are:
+The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 \begin{enumerate}
 	\item For an input vector \(\vec{x} \in \reals^n\) and a weight vector \(\vec{w} \in \reals^n\), take a weighted sum of the inputs, called a \qt{linear combiner}.
 	      \[ \text{linear combiner} = \sum_{i=1}^{n}{x_i w_i} \]
@@ -52,8 +48,10 @@ The stages of a neuron, seen in Figure~\ref{fig:neuron-example} are:
 Early examples of artificial neurons were built in hardware with the output being a light that was either on or off.
 This is equivalent to the \(\operatorname{sign}(\x)\) function, which is now only used for binary classification problems.
 It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
-Commonly the sigmoid function \(S(x) = (1 + \exp(-x))^{-1}\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to vectors) are used.
+Commonly the sigmoid function \(S(x) = (1 + \exp(-x))^{-1}\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
 More recently, a commonly used activation function for deep learning (see Section~\ref{ch:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
+The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or activated, although why it works as well as it does is not well understood.
+\note{Rewrite that last sentence.}
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
 \subsection{Neural network layers and Backpropagation} \label{ch:backpropagation}
@@ -70,7 +68,6 @@ The weights in a neural network are optimised using the backpropagation algorith
 
 \begin{todo}
 	Fix my explanation of the backpropagation algorithm.
-\end{todo}
 
 \note{Is it possible to add a title to an enumerate?}
 For a neural network with \(N\) weights
@@ -79,8 +76,9 @@ For a neural network with \(N\) weights
 	\item Predict the outputs \(\vec{y}^\text{pred} = y^\text{pred}_1, \dots, y^\text{pred}_n\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
 	\item Calculate the error vector \(\vec{\epsilon} = \vec{y}^\text{pred} - \vec{y}^\text{target}\). The error only depends on the output of .
 	\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space .
-	\item Update the weights \(\vec{w} \leftarrow \).
+	\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
 \end{enumerate}
+\end{todo}
 
 % To understand the backpropagation algorithm, consider a network with only one output neuron (such as in Figure~\ref{examplenn}), and consider its prediction for a specific datapoint in the training set.
 % The squared error for this datapoint is \(\varepsilon = \left(y^\text{target} - y^\text{prediction}\right)^2\).
@@ -103,13 +101,15 @@ For a neural network with \(N\) weights
 Estimating the parameters of an \ac{ANN} using either type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
-\section{Deep Learning}\label{ch:deep-learning}
+\section{Deep Learning} \label{ch:deep-learning}
 
 \begin{todo}
 	DL is just ML with more layers
 \end{todo}
 
-\note{Rewrite this to more slowly introduce deep learning and be more generally about machine learning than ANNs}
+\begin{todo}
+	Rewrite this to more slowly introduce deep learning and be more generally about machine learning than ANNs
+\end{todo}
 As computing power has increased exponentially following Moore's law, machine learning has become a more viable and effective method of prediction.
 In the 21st century, success has been found in increasing the number of layers in a neural network or other machine learning method rather than the complexity of each layer.
 These \qt{deep neural networks} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
@@ -143,12 +143,14 @@ The result of this learning is seen in Figure~\ref{fig:ann-output}.
 \end{figure}
 
 \begin{todo}
-	Information on choosing the right size NN
+	Information on choosing the right size NN. \\
+	The vanishing gradient problem. \\
+	Making the ANN too big results in the ANN just remembering the data.
 \end{todo}
 
 \subsection{Ordering of the datapoints}
 
-Due to the form of stochastic gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
+Due to the stochastic batch gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
 An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural network has been trained on the example data which has been shuffled, reversed, randomised and separated.
 
 \begin{figure}[htbp]
@@ -158,4 +160,4 @@ An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural 
 	\label{fig:ann-order}
 \end{figure}
 
-\textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples.
+\textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples and slowly working towards more difficult training examples.
