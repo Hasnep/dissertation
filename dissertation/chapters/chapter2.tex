@@ -80,6 +80,14 @@ For a neural network with \(N\) weights
 \end{enumerate}
 \end{todo}
 
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\textwidth}
+    \input{figures/neural-network-example.pdf_tex}
+	\caption{An example of the structure of a neural network.}
+	\label{fig:neural-network-example}
+\end{figure}
+
 % To understand the backpropagation algorithm, consider a network with only one output neuron (such as in Figure~\ref{examplenn}), and consider its prediction for a specific datapoint in the training set.
 % The squared error for this datapoint is \(\varepsilon = \left(y^\text{target} - y^\text{prediction}\right)^2\).
 % The target is fixed, and we cannot directly change the prediction, so to reduce \(\varepsilon\), we can calculate the change we need to make to each weight to reduce the error the most.
