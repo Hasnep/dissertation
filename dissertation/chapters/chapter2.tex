@@ -9,19 +9,17 @@ Computers are able to perform predictive tasks by combining information in nonli
 \section{Neural Networks}
 
 \subsection{The Neuron}
+\subsubsection{The Perceptron}
+In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
+At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
+Rosenblatt's biggest criticism of these models was that while a deterministic algorithm could perform a single task perfectly, unlike a biological brain, it could not be generalised to perform many tasks without a lot of substantial changes.
+He described deterministic models of the brain as \qtc[387]{rosenblatt1958}{amount[ing] simply to logical contrivances for performing particular algorithms \cut{} in response to sequences of stimuli}.
+Another way he wanted his synthetic brain to mirror biological brains was the property of redundancy, the ability to have pieces removed and still function, which is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
+It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt1958}{would require only a refinement or modification of existing principles}, but Rosenblatt questioned this idea, believing that the problem needed a more fundamental re-evaluation.
+At the heart of his idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
+The perceptron was later generalised to the concept of an \qt{(artificial) neuron} (also called a \qt{unit}), which, instead of only giving a binary output, maps a finite number of real inputs to a single real output value.
 
-% In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
-% At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
-% Rosenblatt's biggest criticism of these models was that while a deterministic algorithm could perform a single task perfectly, unlike a biological brain, it could not be generalised to perform many tasks without a lot of substantial changes.
-% He described deterministic models of the brain as \qtc[387]{rosenblatt1958}{amount[ing] simply to logical contrivances for performing particular algorithms \cut{} in response to sequences of stimuli}.
-% Another way he wanted his synthetic brain to mirror biological brains was the property of redundancy, the ability to have pieces removed and still function, which is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
-% It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt1958}{would require only a refinement or modification of existing principles}, but Rosenblatt questioned this idea, believing that the problem needed a more fundamental re-evaluation.
-% At the heart of his idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
-% The perceptron was later generalised to the concept of an \qt{(artificial) neuron} (also called a \qt{unit}), which, instead of only giving a binary output, maps a finite number of real inputs to a single real output value.
-
-% Since the invention of \citeauthor{rosenblatt1957}'s perceptron, there have been many alternative models for neurons proposed, including fuzzy neurons, which allow truth values to be on a scale rather than a Boolean value~\autocite{gupta1991}; higher order neurons, which include second or higher products of the inputs~\autocite{rumelhart1986} and spiking neural networks, which use differential equations to emulate the electrical charge of biological neurons~\autocite{maass1997}.
-% We will only consider the simple neuron based on Rosenblatt's perceptron.
-
+\subsubsection{Artificial Neurons}
 A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function~\(\phi(\x)\).
 
 The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
