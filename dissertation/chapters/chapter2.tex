@@ -144,9 +144,10 @@ The result of this learning is seen in Figure~\ref{fig:ann-output}.
 
 \begin{todo}
 	Information on choosing the right size NN. \\
-	The vanishing gradient problem. \\
-	Making the ANN too big results in the ANN just remembering the data.
 \end{todo}
+
+As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to he input layers.
+An \ac{ANN} with too many parameters/too wide will just \qt{remember} the training data, i.e.\ overfit the data and not find any meaningful patterns in the data.
 
 \subsection{Ordering of the datapoints}
 
