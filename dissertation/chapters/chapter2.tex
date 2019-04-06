@@ -36,7 +36,7 @@ The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\includegraphics[width=\figwidth]{example-image-golden.pdf}
 	\caption{A diagram of an example artificial neuron.}
 	\label{fig:neuron-example}
 \end{figure}
@@ -80,8 +80,7 @@ For a neural network with \(N\) weights
 
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\textwidth}
-    \input{figures/neural-network-example.pdf_tex}
+	\includesvg[width=\figwidth]{neural-network-example}
 	\caption{An example of the structure of a neural network.}
 	\label{fig:neural-network-example}
 \end{figure}
@@ -129,8 +128,15 @@ Many modern phones have facial recognition software built in, and \ac{AI} voice 
 
 \section{Example}
 
-To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x)\).
-256 evenly spread datapoints were taken from this function, and noise following \(\epsilon \distributed \normdist(0, 0.1)\) was applied.
+To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is normal noise \(\epsilon \distributed \normdist(0, 0.1)\).
+256 evenly spread datapoints were taken from this function, seen in Figure~\ref{fig:sin-x-dataset}. 
+
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{sin-x-dataset}
+	\caption{The training dataset.}
+	\label{fig:sin-x-dataset}
+\end{figure}
 
 \begin{todo}
 	Possibly also use a more complex example?
@@ -143,7 +149,7 @@ The result of this learning is seen in Figure~\ref{fig:ann-output}.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\includegraphics[width=\figwidth]{example-image-golden.pdf}
 	\caption{The output of the neural network.}
 	\label{fig:ann-output}
 \end{figure}
@@ -162,7 +168,7 @@ An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural 
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{example-image-golden.pdf}
+	\includegraphics[width=\figwidth]{example-image-golden.pdf}
 	\caption{The output of the same neural network trained on the same data but ordered differently.}
 	\label{fig:ann-order}
 \end{figure}

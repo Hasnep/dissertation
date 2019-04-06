@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'neural-network-example.pdf' (pdf, eps, ps)
+%% Accompanies image file 'neural-network-example_svg-tex.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{616.02246094bp}%
+    \setlength{\unitlength}{616.44360352bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,18 +50,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.41306315)%
+  \begin{picture}(1,0.41243936)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{neural-network-example.pdf}}%
-    \put(0.06983911,0.38959618){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}input layer\end{tabular}}}}%
-    \put(0.29994436,0.38959618){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}hidden layer\end{tabular}}}}%
-    \put(0.54344197,0.38959618){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}hidden layer\end{tabular}}}}%
-    \put(0.78937456,0.38959618){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}output layer\end{tabular}}}}%
-    \put(-0.00321017,0.33846168){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
-    \put(-0.00321017,0.2654124){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
-    \put(-0.00321017,0.1935806){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_3$\end{tabular}}}}%
-    \put(-0.00321017,0.04748203){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_n$\end{tabular}}}}%
-    \put(0.9391256,0.1935806){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{neural-network-example_svg-tex.pdf}}%
+    \put(0.07047458,0.38933002){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}input layer\end{tabular}}}}%
+    \put(0.30042262,0.38933002){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}hidden layer\end{tabular}}}}%
+    \put(0.54375388,0.38933002){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}hidden layer\end{tabular}}}}%
+    \put(0.78951846,0.38933002){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}output layer\end{tabular}}}}%
+    \put(-0.0025248,0.33823045){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
+    \put(-0.0025248,0.26523108){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
+    \put(-0.0025248,0.19344835){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_3$\end{tabular}}}}%
+    \put(-0.0025248,0.0474496){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_n$\end{tabular}}}}%
+    \put(0.93916718,0.19344835){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
