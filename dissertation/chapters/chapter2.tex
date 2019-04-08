@@ -164,13 +164,13 @@ An \ac{ANN} with too many parameters/too wide will just \qt{remember} the traini
 \subsection{Ordering of the datapoints}
 
 Due to the stochastic batch gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
-An example of this is seen in Figure~\ref{fig:ann-order}, where the same neural network has been trained on the example data which has been shuffled, reversed, randomised and separated.
+An example of this is seen in Figure~\ref{fig:compare-order}, where the same neural network has been trained on the example data which has been shuffled, reversed, randomised and separated.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\figwidth]{example-image-golden.pdf}
+	\includesvg[width=\figwidth]{compare-order}
 	\caption{The output of the same neural network trained on the same data but ordered differently.}
-	\label{fig:ann-order}
+	\label{fig:compare-order}
 \end{figure}
 
 \textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples and slowly working towards more difficult training examples.
