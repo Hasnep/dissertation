@@ -145,13 +145,13 @@ To demonstrate the possibility of using statistical methods to understand the pr
 \subsection{Training a neural network}
 
 This function was learnt by a neural network with 8 layers, each with 10 neurons and the \(\tanh(\cdot)\) activation function, except for the final layer which used a linear activation function.
-The result of this learning is seen in Figure~\ref{fig:ann-output}.
+The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\figwidth]{example-image-golden.pdf}
+	\includesvg[width=\figwidth]{ann-preds}
 	\caption{The output of the neural network.}
-	\label{fig:ann-output}
+	\label{fig:ann-preds}
 \end{figure}
 
 As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to the input layers.
