@@ -2,7 +2,7 @@
 
 \chapter{Machine Learning}
 
-So much data is collected that in many cases, hand building a model to analyse, find patterns in and draw conclusions from the data is unfeasible, so we can use computers to analyse it in a process called \ac{ML}~\autocite[1]{murphy2012}.
+So much data is collected that in many cases, hand building a model to analyse, find patterns in and draw conclusions from the data is unfeasible, so we use computers to analyse it in a process called \ac{ML}~\autocite[1]{murphy2012}.
 Computers are able to perform predictive tasks by combining information in nonlinear ways, but can become much more powerful when the output of one nonlinear process is fed into another nonlinear process, abstracting the raw data to a higher level.
 \qtc[436]{lecun2015}{With the composition of enough such transformations, very complex functions can be learned}.
 
@@ -49,7 +49,7 @@ It is not useful for connecting to another neuron, as information about the magn
 Commonly the sigmoid function \(S(x) = (1 + \exp(-x))^{-1}\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
 More recently, a commonly used activation function for deep learning (see Section~\ref{ch:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or activated, although why it works as well as it does is not well understood.
-\note{Rewrite that last sentence.}
+\note{Rewrite that last sentence to not include \qt{works as well as it does}.}
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
 \subsection{Neural network layers and Backpropagation} \label{ch:backpropagation}
@@ -73,7 +73,7 @@ For a neural network with \(N\) weights
 	\item Randomly initialise all the weights \(\vec{w} = w_1, \dots, w_N\).
 	\item Predict the outputs \(\vec{y}^\text{pred} = y^\text{pred}_1, \dots, y^\text{pred}_n\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
 	\item Calculate the error vector \(\vec{\epsilon} = \vec{y}^\text{pred} - \vec{y}^\text{target}\). The error only depends on the output of .
-	\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space .
+	\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space\dots 
 	\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
 \end{enumerate}
 \end{todo}
@@ -124,23 +124,23 @@ These \qt{deep neural networks} \qtc[438]{lecun2015}{can implement extremely int
 \ac{DL} has even made its way into consumer products.
 Many modern phones have facial recognition software built in, and \ac{AI} voice assistants are becoming more common in homes.
 
-\ac{DL} is also becoming more accessible, with the release of Google's \qt{Tensorflow} package for \ac{DL}~\autocite{abadi2016}, which is now available as \qt{Keras}, a user friendly package for Python~\autocite{chollet2015} and R~\autocite{allaire2018}.
+\ac{DL} is also becoming more accessible, for example with the release of Google's \qt{Tensorflow} package for \ac{DL}~\autocite{abadi2016}, which is now available as \qt{Keras}, a user friendly package for Python~\autocite{chollet2015} and R~\autocite{allaire2018}.
 
 \section{Example}
 
-To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is normal noise \(\epsilon \distributed \normdist(0, 0.1)\).
+To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is iid normal noise \(\epsilon \distributed \normdist(0, 0.1)\).
 256 evenly spread datapoints were taken from this function, seen in Figure~\ref{fig:sin-x-dataset}. 
 
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{sin-x-dataset}
-	\caption{The training dataset.}
+	\caption{The true function \(f(x) = x + 5 \sin(x)\) (blue) and the training data (red).}
 	\label{fig:sin-x-dataset}
 \end{figure}
 
-\begin{todo}
-	Possibly also use a more complex example?
-\end{todo}
+% \begin{todo}
+% 	Possibly also use a more complex example?
+% \end{todo}
 
 \subsection{Training a neural network}
 
@@ -154,17 +154,21 @@ The result of this learning is seen in Figure~\ref{fig:ann-output}.
 	\label{fig:ann-output}
 \end{figure}
 
-\begin{todo}
-	Information on choosing the right size NN. \\
-\end{todo}
-
-As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to he input layers.
+As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to the input layers.
 An \ac{ANN} with too many parameters/too wide will just \qt{remember} the training data, i.e.\ overfit the data and not find any meaningful patterns in the data.
+
+\begin{todo}
+	Add some more information on how to choose the right size ANN.
+\end{todo}
 
 \subsection{Ordering of the datapoints}
 
 Due to the stochastic batch gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
 An example of this is seen in Figure~\ref{fig:compare-order}, where the same neural network has been trained on the example data which has been shuffled, reversed, randomised and separated.
+
+\begin{todo}
+	Expand on what these mean.
+\end{todo}
 
 \begin{figure}[htbp]
 	\centering
@@ -174,3 +178,7 @@ An example of this is seen in Figure~\ref{fig:compare-order}, where the same neu
 \end{figure}
 
 \textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples and slowly working towards more difficult training examples.
+
+\begin{todo}
+	Expand on this topic.
+\end{todo}
