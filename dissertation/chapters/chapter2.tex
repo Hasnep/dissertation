@@ -65,17 +65,16 @@ If the activation function is the identity function, then optimising a neuron is
 The weights in a neural network are optimised using the backpropagation algorithm.
 
 \begin{todo}
-	Fix my explanation of the backpropagation algorithm.
-
-\note{Is it possible to add a title to an enumerate?}
-For a neural network with \(N\) weights
-\begin{enumerate}
-	\item Randomly initialise all the weights \(\vec{w} = w_1, \dots, w_N\).
-	\item Predict the outputs \(\vec{y}^\text{pred} = y^\text{pred}_1, \dots, y^\text{pred}_n\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
-	\item Calculate the error vector \(\vec{\epsilon} = \vec{y}^\text{pred} - \vec{y}^\text{target}\). The error only depends on the output of .
-	\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space\dots 
-	\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
-\end{enumerate}
+	\note{Fix my explanation of the backpropagation algorithm.}
+	
+	For a neural network with \(N\) weights
+	\begin{enumerate}
+		\item Randomly initialise all the weights \(\vec{w} = w_1, \dots, w_N\).
+		\item Predict the outputs \(\vec{y}^\text{pred} = y^\text{pred}_1, \dots, y^\text{pred}_n\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
+		\item Calculate the error vector \(\vec{\epsilon} = \vec{y}^\text{pred} - \vec{y}^\text{target}\). The error only depends on the output of .
+		\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space\dots
+		\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
+	\end{enumerate}
 \end{todo}
 
 \begin{figure}[htbp]
