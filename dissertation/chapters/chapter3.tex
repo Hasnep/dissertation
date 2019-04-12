@@ -2,17 +2,23 @@
 
 \chapter{Opening the Black Box}
 
-\section{Previous papers on this subject}
+\section{State of the art}
 
-\begin{todo}
-	Add some previous research here.
-\end{todo}
+The fact that an \ac{ANN} consist of many simple operations in a hierarchical structure suggests that it could be possible to mathematically or statistically explain or approximate their output.
 
-\section{Regression}
+\textcite[13]{cortez2013} trained a deep neural network on images and attempted to \qt{invert} it to reconstruct the original inputs.
+They found that each successive layer abstracts the data, but isolating the specific neurons responsible for specific objects or ideas was more difficult.
+Sensitivity analysis has also been used to evaluate the importance of each input to an \ac{ANN} in the final output, and the results visualised as a decision tree where each branch represents a range of input values~
+
+There appears to be no literature on using \acp{GP} as a way to better understand how deep learning algorithms work or as a way to understand their structure, although there has been a fierce debate over the advantages of both \acp{ANN} and \acp{GP} since at least the 1990s.
+\textcite[65--66]{rasmussen1997} gave evidence that \acp{GP} are a valid replacement for \acp{ANN} in nonlinear problems with fewer than 1000 datapoints, although due to advances in processing power, \ac{ANN} algorithms and \ac{GP} techniques, this recommendation will likely have changed.
+\textcite[25]{mackay1997} gave an example of \acp{GP} being used for binary classification, in a similar way to \acp{ANN}.
+When \ac{GPR} and \acp{ANN} are compared, the main advantages mentioned are usually faster convergence and confidence or credible intervals for the predictions, which \acp{ANN} cannot do~\autocite{herbrich2003}.
+\note{Rewrite that sentence}
+
+\section{Multiple regression}
 
 One method of opening the black box of machine learning is to use multiple regression.
-
-\subsection{Linear regression}
 
 In this case, \(x\), \(x^2\), \(\sin(x)\), \(\sin(2x)\), \(\sin(x/2)\), \(\cos(x)\), \(\cos(2x)\) and \(\cos(x/2)\) were used.
 This produced a complex model with many coefficients close to zero.
