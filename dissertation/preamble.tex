@@ -159,4 +159,8 @@
 \usepackage{framed}
 \newenvironment{todo}{\begin{framed}\textbf{To-do:}~\itshape}{\end{framed}}
 % note macro
-\newcommand{\note}[1]{[Note:~\textit{#1}]}
+\newcommand{\note}[1]{\textit{[#1]}}
+% reword macro
+\usepackage{soul}
+\setulcolor{red}
+\newcommand{\reword}[1]{\ul{#1}}
