@@ -2,36 +2,38 @@
 
 \chapter{Machine Learning}
 
-So much data is collected that in many cases, hand building a model to analyse, find patterns in and draw conclusions from the data is unfeasible, so we use computers to analyse it in a process called \ac{ML}~\autocite[1]{murphy2012}.
-Computers are able to perform predictive tasks by combining information in nonlinear ways, but can become much more powerful when the output of one nonlinear process is fed into another nonlinear process, abstracting the raw data to a higher level.
-\qtc[436]{lecun2015}{With the composition of enough such transformations, very complex functions can be learned}.
+The rise in success that \ac{ML} and \ac{DL} \reword{have seen is down to two factors: the increase in computing power and the increase in data being collected rising.}
 
-\section{Neural Networks}
+\section{Artificial Neural Networks}
 
-\subsection{The Neuron}
-\subsubsection{The Perceptron}
+One of the most popular types of \ac{ML} algorithm is the \ac{ANN}.
+
+\subsection{The Perceptron}
+
 In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
 At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
-Rosenblatt's biggest criticism of these models was that while a deterministic algorithm could perform a single task perfectly, unlike a biological brain, it could not be generalised to perform many tasks without a lot of substantial changes.
+Rosenblatt's \reword{biggest criticism} of these models was that while a deterministic algorithm could perform a single task perfectly, unlike a biological brain, it could not be generalised to perform any more tasks without substantial changes.
 He described deterministic models of the brain as \qtc[387]{rosenblatt1958}{amount[ing] simply to logical contrivances for performing particular algorithms \cut{} in response to sequences of stimuli}.
 Another way he wanted his synthetic brain to mirror biological brains was the property of redundancy, the ability to have pieces removed and still function, which is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
+
 It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt1958}{would require only a refinement or modification of existing principles}, but Rosenblatt questioned this idea, believing that the problem needed a more fundamental re-evaluation.
 At the heart of his idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
-The perceptron was later generalised to the concept of an \qt{(artificial) neuron} (also called a \qt{unit}), which, instead of only giving a binary output, maps a finite number of real inputs to a single real output value.
+The perceptron was later generalised to the concept of the (artificial) neuron (also called a \qt{unit}), which, instead of only giving a binary output, maps a number of real inputs to a single real output value.
 
-\subsubsection{Artificial Neurons}
-A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function~\(\phi(\x)\).
+\subsection{Artificial Neurons}
+
+A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function (or \qt{limiter function})~\(\phi(\x)\).
 
 The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 \begin{enumerate}
 	\item For an input vector \(\vec{x} \in \reals^n\) and a weight vector \(\vec{w} \in \reals^n\), take a weighted sum of the inputs, called a \qt{linear combiner}.
 	      \[ \text{linear combiner} = \sum_{i=1}^{n}{x_i w_i} \]
-	\item Then, a bias \(b \in \reals{}\) is added, which translates the output to a suitable range.
+	\item Then, the bias \(b \in \reals{}\) is added, which translates the output to a suitable range.
 	      The bias controls how large the weighted sum needs to be to \qt{activate} the neuron, so this is called the pre-activation \((v)\).
 	      \[ \text{pre-activation} = v = \sum_{i=1}^{n}{x_i w_i} + b \]
-	\item Finally, an \qt{activation function} (or \qt{limiter function}) \(\phi(\x)\) is applied, which restricts the output to a range and introduces nonlinearity to the system.
-	      The activation function must be differentiable if the gradient descent method is used (see Section~\ref{ch:backpropagation}) as gradient descent relies on calculating the gradient of the error.
-	      \[ \text{neuron output} = y = \phi\left(\sum_{i=1}^{n}{x_i w_i} + b \right) \]
+	\item Finally, the activation function \(\phi(\x)\) is applied, which restricts the output to a range and introduces nonlinearity to the system.
+	      The activation function must be differentiable if the gradient descent method is used (see Section~\ref{sec:backpropagation}).
+	      \[ \text{neuron output} = \hat{y} = \phi\left(\sum_{i=1}^{n}{x_i w_i} + b \right) \]
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -41,18 +43,17 @@ The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 	\label{fig:neuron-example}
 \end{figure}
 
-\subsubsection{Activation functions}
+% \subsubsection{Activation functions}
 
-Early examples of artificial neurons were built in hardware with the output being a light that was either on or off.
+Early examples of artificial neurons were built in hardware \reword{with the output being a light that was either on or off.}
 This is equivalent to the \(\operatorname{sign}(\x)\) function, which is now only used for binary classification problems.
 It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
-Commonly the sigmoid function \(S(x) = (1 + \exp(-x))^{-1}\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
-More recently, a commonly used activation function for deep learning (see Section~\ref{ch:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
-The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or activated, although why it works as well as it does is not well understood.
-\note{Rewrite that last sentence to not include \qt{works as well as it does}.}
+Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
+More recently, a popular used activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
+The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it \reword{works as well as it does} is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
-\subsection{Neural network layers and Backpropagation} \label{ch:backpropagation}
+\subsection{Neural network layers and Backpropagation} \label{sec:backpropagation}
 
 \begin{todo}
 	Neurons are connected in layers. \\
@@ -70,8 +71,9 @@ The weights in a neural network are optimised using the backpropagation algorith
 	For a neural network with \(N\) weights
 	\begin{enumerate}
 		\item Randomly initialise all the weights \(\vec{w} = w_1, \dots, w_N\).
-		\item Predict the outputs \(\vec{y}^\text{pred} = y^\text{pred}_1, \dots, y^\text{pred}_n\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
-		\item Calculate the error vector \(\vec{\epsilon} = \vec{y}^\text{pred} - \vec{y}^\text{target}\). The error only depends on the output of .
+		\item Predict the outputs \(\vec{y}^\text{pred} = (y^\text{pred}_1, \dots, y^\text{pred}_n)\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
+		\item Calculate the squared-error vector \(\vec{\epsilon}\) where \(\epsilon_i = (y_i^\text{pred} - y_i^\text{target})^2\) for \(i \in 1, \dots, n\).
+		\item The target is fixed, and we cannot directly change the prediction, so to reduce \(\vec{\epsilon}\), we can calculate the change we need to make to each weight to reduce the error the most.
 		\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space\dots
 		\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
 	\end{enumerate}
@@ -105,7 +107,7 @@ The weights in a neural network are optimised using the backpropagation algorith
 Estimating the parameters of an \ac{ANN} using either type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
-\section{Deep Learning} \label{ch:deep-learning}
+\section{Deep Learning} \label{sec:deep-learning}
 
 \begin{todo}
 	DL is just ML with more layers
@@ -114,7 +116,7 @@ It is quite rare for the algorithm to get trapped in a local minimum, but a more
 \begin{todo}
 	Rewrite this to more slowly introduce deep learning and be more generally about machine learning than ANNs
 \end{todo}
-As computing power has increased exponentially following Moore's law, machine learning has become a more viable and effective method of prediction.
+As computing power has increased exponentially following Moore's law, \ac{ML} has become a more viable and effective method of prediction.
 In the 21st century, success has been found in increasing the number of layers in a neural network or other machine learning method rather than the complexity of each layer.
 These \qt{deep neural networks} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
 
@@ -128,18 +130,14 @@ Many modern phones have facial recognition software built in, and \ac{AI} voice 
 \section{Example}
 
 To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is iid normal noise \(\epsilon \distributed \normdist(0, 0.1)\).
-256 evenly spread datapoints were taken from this function, seen in Figure~\ref{fig:sin-x-dataset}. 
+256 evenly spread datapoints were drawn from this function, seen in Figure~\ref{fig:sin-x-dataset}.
 
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{sin-x-dataset}
-	\caption{The true function \(f(x) = x + 5 \sin(x)\) (blue) and the training data (red).}
+	\caption{The true function \(f(x) = x + 5 \sin(x)\) (blue) and the 256 training points (red).}
 	\label{fig:sin-x-dataset}
 \end{figure}
-
-% \begin{todo}
-% 	Possibly also use a more complex example?
-% \end{todo}
 
 \subsection{Training a neural network}
 
