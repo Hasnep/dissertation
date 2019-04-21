@@ -6,7 +6,8 @@ The rise in success that \ac{ML} and \ac{DL} \reword{have seen is down to two fa
 
 \section{Artificial Neural Networks}
 
-One of the most popular types of \ac{ML} algorithm is the \ac{ANN}.
+One of the most popular types of \ac{ML} algorithm is the \ac{ANN}, a very general algorithm that has \reword{seen great sucess} in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
+It was chosen for this \reword{experiment} \note{?} because \note{finish this sentence}
 
 \subsection{The Perceptron}
 
@@ -53,31 +54,10 @@ More recently, a popular used activation function for \ac{DL} (see Section~\ref{
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it \reword{works as well as it does} is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
-\subsection{Neural network layers and Backpropagation} \label{sec:backpropagation}
+\subsection{Layers and Backpropagation} \label{sec:backpropagation}
 
-\begin{todo}
-	Neurons are connected in layers. \\
-	Backpropagation is used to optimise the weights. \\
-	Batch backpropagation of all the datapoints takes too long. \\
-	Online BP is faster but takes more steps. \\
-	Stochastic minibatches can be used to speed up calculations. 
-\end{todo}
-
-The weights in a neural network are optimised using the backpropagation algorithm.
-
-\begin{todo}
-	\note{Fix my explanation of the backpropagation algorithm.}
-	
-	For a neural network with \(N\) weights
-	\begin{enumerate}
-		\item Randomly initialise all the weights \(\vec{w} = w_1, \dots, w_N\).
-		\item Predict the outputs \(\vec{y}^\text{pred} = (y^\text{pred}_1, \dots, y^\text{pred}_n)\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
-		\item Calculate the squared-error vector \(\vec{\epsilon}\) where \(\epsilon_i = (y_i^\text{pred} - y_i^\text{target})^2\) for \(i \in 1, \dots, n\).
-		\item The target is fixed, and we cannot directly change the prediction, so to reduce \(\vec{\epsilon}\), we can calculate the change we need to make to each weight to reduce the error the most.
-		\item Calculate the gradient of the error \(\vec{\Delta} = \pdv{\vec{\epsilon}}{\vec{w}}\). \(\vec{\Delta}\) represents the direction in \(N\)-dimensional space\dots
-		\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
-	\end{enumerate}
-\end{todo}
+In the case of a \qt{feedforward} \ac{ANN}, the neurons are connected in groups called layers, where each neurons in a layer \reword{only receives information from each neuron in the previous layer, and only sends information to each neuron in the subsequent layer.}
+Convolutional and recurrent neural networks also exist in which the layers are not connected in series.
 
 \begin{figure}[htbp]
 	\centering
@@ -85,6 +65,32 @@ The weights in a neural network are optimised using the backpropagation algorith
 	\caption{An example of the structure of a neural network.}
 	\label{fig:neural-network-example}
 \end{figure}
+
+\begin{todo}
+	Batch backpropagation of all the datapoints takes too long. \\
+	Online BP is faster but takes more steps. \\
+	Stochastic minibatches can be used to speed up calculations. 
+\end{todo}
+
+The weights in a neural network are optimised using the backpropagation algorithm.
+
+	\begin{todo}
+		\note{Fix my explanation of backpropogation by focusing on one datapoint and one weight.}
+
+		For a neural network with \(N\) weights:
+	\begin{enumerate}
+		\item Randomly initialise all the weights \(\vec{w} = w_1, \dots, w_N\).
+		\item Predict the outputs \(\vec{y}^\text{pred} = (y^\text{pred}_1, \dots, y^\text{pred}_n)\) using the training data \(X = (\vec{x}_1, \dots, \vec{x}_n)\).
+		\item Calculate the squared-error vector \(\vec{\varepsilon}\) where
+		\[\varepsilon_i = \frac{1}{2}\left(y_i^\text{pred} - y_i^\text{target}\right)^2\]
+		for \(i \in 1, \dots, n\).
+		\item The target is fixed, and we cannot directly change the prediction, so to reduce \(\vec{\varepsilon}\), we calculate the change we need to make to each weight to reduce the error the most.
+		The derivative of the error with respect to the \(j\)th weight is \[\diffp{\vec{\varepsilon}}/{w_j} = \].
+		\item
+		\(\vec{\Delta}\) represents the direction in \(N\)-dimensional space\dots
+		\item Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\).
+	\end{enumerate}
+	\end{todo}
 
 % To understand the backpropagation algorithm, consider a network with only one output neuron (such as in Figure~\ref{examplenn}), and consider its prediction for a specific datapoint in the training set.
 % The squared error for this datapoint is \(\varepsilon = \left(y^\text{target} - y^\text{prediction}\right)^2\).
@@ -110,14 +116,11 @@ It is quite rare for the algorithm to get trapped in a local minimum, but a more
 \section{Deep Learning} \label{sec:deep-learning}
 
 \begin{todo}
-	DL is just ML with more layers
-\end{todo}
-
-\begin{todo}
 	Rewrite this to more slowly introduce deep learning and be more generally about machine learning than ANNs
 \end{todo}
+
 As computing power has increased exponentially following Moore's law, \ac{ML} has become a more viable and effective method of prediction.
-In the 21st century, success has been found in increasing the number of layers in a neural network or other machine learning method rather than the complexity of each layer.
+In the 21st century, success has been found in increasing the number of layers in a neural network or other machine learning method rather than the complexity of each layer so that the raw data undergoes more levels of abstraction.
 These \qt{deep neural networks} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
 
 \section{Modern techniques/tools}
@@ -129,7 +132,7 @@ Many modern phones have facial recognition software built in, and \ac{AI} voice 
 
 \section{Example}
 
-To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is iid normal noise \(\epsilon \distributed \normdist(0, 0.1)\).
+To demonstrate the possibility of using statistical methods to understand the process of deep learning, we use a simple function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is iid Gaussian noise \(\epsilon \distributed \normdist(0, 0.1)\).
 256 evenly spread datapoints were drawn from this function, seen in Figure~\ref{fig:sin-x-dataset}.
 
 \begin{figure}[htbp]
