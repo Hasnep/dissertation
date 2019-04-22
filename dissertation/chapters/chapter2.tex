@@ -77,17 +77,17 @@ A fully connected \ac{ANN} is one where every neuron in a layer is connected to 
 The weights in a neural network are optimised (or \qt{trained}) using the backpropagation algorithm.
 The weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
-	\begin{enumerate}
-		\item Input a dataset of \(n\) datapoints \(X = \vec{x}_1, \dots, \vec{x}_n\) with corresponding targets \(y_1, \dots, y_n\).
-		\item Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
-		\item \label{itm:begin-bp-loop} Use the training datapoint \(\vec{x}_i\) to make a prediction \(\hat{y}_i\).
-		\item Calculate the squared-error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = 1/2 (\hat{y}_i - y_i)^2\).
-		\item The target is fixed, and the prediction cannot be directly changed, only the weights.
-		Calculate the gradient of the error with respect to each of the weights \(j = 1, \dots, N\): \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\).
-		The error at each layer only depends on the weights of the later layers, so by applying the chain rule, the calculation can \qt{step back} though the layers until the first weights are reached.
-		\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), hence taking a step in the direction \(-\vec{\Delta}\) will most reduce the weights.
-		\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step-size hyperparameter, which controls how quickly the algorithm converges.
-	\end{enumerate}
+\begin{enumerate}
+	\item Input a dataset of \(n\) datapoints \(X = \vec{x}_1, \dots, \vec{x}_n\) with corresponding targets \(y_1, \dots, y_n\).
+	\item Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
+	\item \label{itm:begin-bp-loop} Use the training datapoint \(\vec{x}_i\) to make a prediction \(\hat{y}_i\).
+	\item Calculate the squared-error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = 1/2 (\hat{y}_i - y_i)^2\).
+	\item The target is fixed, and the prediction cannot be directly changed, only the weights.
+	      Calculate the gradient of the error with respect to each of the weights \(j = 1, \dots, N\): \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\).
+	      The error at each layer only depends on the weights of the later layers, so by applying the chain rule, the calculation can \qt{step back} though the layers until the first weights are reached.
+	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), hence taking a step in the direction \(-\vec{\Delta}\) will most reduce the weights.
+	\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step-size hyperparameter, which controls how quickly the algorithm converges.
+\end{enumerate}
 The backpropagation algorithm will adjust the weights until either the error reaches below a certain threshold or the maximum number of epochs is reached.
 
 \reword{This type of method is called} \qt{stochastic gradient descent} (also called \qt{online gradient descent} or \qt{iterative gradient descent}).
