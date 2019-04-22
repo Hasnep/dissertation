@@ -54,15 +54,17 @@ More recently, a popular used activation function for \ac{DL} (see Section~\ref{
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it \reword{works as well as it does} is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
-\subsection{Layers and Backpropagation} \label{sec:backpropagation}
+\subsection{Training} \label{sec:backpropagation}
 
-In the case of a \qt{feedforward} \ac{ANN}, the neurons are connected in groups called layers, where each neurons in a layer \reword{only receives information from each neuron in the previous layer, and only sends information to each neuron in the subsequent layer.}
+In the case of a \qt{feedforward} \ac{ANN}, the neurons are connected in sequential groups called layers, where each layer only receives information from the previous layer and only passes information to the subsequent layer.
 Convolutional and recurrent neural networks also exist in which the layers are not connected in series.
+A fully connected \ac{ANN} is one where every neuron in a layer is connected to every layer on the subsequent layer.
+% As seen in Figure~\ref{fig:neural-network-example}.
 
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{neural-network-example}
-	\caption{An example of the structure of a neural network.}
+	\caption{An example of the structure of a fully connected feedforward neural network.}
 	\label{fig:neural-network-example}
 \end{figure}
 
@@ -72,7 +74,7 @@ Convolutional and recurrent neural networks also exist in which the layers are n
 	Stochastic minibatches can be used to speed up calculations. 
 \end{todo}
 
-The weights in a neural network are optimised using the backpropagation algorithm.
+The weights in a neural network are optimised (or \qt{trained}) using the backpropagation algorithm.
 The weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 	\begin{enumerate}
