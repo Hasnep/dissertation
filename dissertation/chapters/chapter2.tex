@@ -96,7 +96,7 @@ An alternative is \qt{batch gradient descent}, where the sum of the squared erro
 \[ \vec{\varepsilon} = \frac{1}{2} \sum_{i = 1}^{n}\left(\hat{y}_i - y_i\right)^2. \]
 This means each epoch consists of \reword{only one very efficient step}, and so will converge in fewer epochs, however this takes significantly longer to finish training.
 In practice, \qt{minibatches} are used, where a random subset of the datapoints are used to train the model.
-This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible} to noise.
+This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible} to noise~\autocite[59]{Thoma2017}.
 
 Estimating the parameters of an \ac{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
