@@ -5,22 +5,23 @@
 \section{How well have each of the attempts worked?}
 
 \begin{todo}
-    The stepwise regression was not as good as the LASSO technique, which worked quite well.
+	The stepwise regression was not as good as the LASSO technique, which worked quite well. \\
+	GPs were as good as expected.
 \end{todo}
 
 \section{What could be improved?}
 
-\begin{todo}
-    The 
-\end{todo}
-
 \section{How useful would more research on this topic be?}
 
 \begin{todo}
-    Clearly something pretty alright has been done, but it's not clear how well this would generalise to higher dimensions
+	Clearly something pretty alright has been done, but it's not clear how well this would generalise to higher dimensions
 \end{todo}
 
 \section{Future research}
 
+If using this, it would be sensible to first perform sensitivity analysis to find the significant variables.
+
 For more complex applications, the use of \acp{GP} could be extended to deep (or hierarchical) \acp{GP}, which are analogous to \acp{DNN} (see Section~\ref{sec:deep-learning}).
 \reword{They involve} chaining the output of one \ac{GP} into another to better model nonlinearity~\autocite{damianou2013}.
+
+Use lasso as mean function and gp for everything else.

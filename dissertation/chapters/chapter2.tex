@@ -68,12 +68,6 @@ A fully connected \ac{ANN} is one where every neuron in a layer is connected to 
 	\label{fig:neural-network-example}
 \end{figure}
 
-\begin{todo}
-	Batch backpropagation of all the datapoints takes too long. \\
-	Online BP is faster but takes more steps. \\
-	Stochastic minibatches can be used to speed up calculations. 
-\end{todo}
-
 The weights in a neural network are optimised (or \qt{trained}) using the backpropagation algorithm.
 The weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
@@ -94,22 +88,20 @@ The backpropagation algorithm will adjust the weights until either the error rea
 Each datapoint moves the weights in a slightly different direction, so the optimisation process zigzags towards the optimum, rather than taking the steepest path.
 An alternative is \qt{batch gradient descent}, where the sum of the squared errors for all the training data is calculated:
 \[ \vec{\varepsilon} = \frac{1}{2} \sum_{i = 1}^{n}\left(\hat{y}_i - y_i\right)^2. \]
-This means each epoch consists of \reword{only one very efficient step}, and so will converge in fewer epochs, however this takes significantly longer to finish training.
+This means each epoch consists of \reword{only one very efficient step}, and so will converge in fewer epochs, however each epoch takes so long that this takes significantly longer to finish training.
 In practice, \qt{minibatches} are used, where a random subset of the datapoints are used to train the model.
-This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible} to noise~\autocite[59]{Thoma2017}.
+This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible} to noise~\autocite[59]{thoma2017}.
 
 Estimating the parameters of an \ac{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
 \section{Deep Learning} \label{sec:deep-learning}
 
-\begin{todo}
-	Rewrite this to more slowly introduce deep learning and be more generally about machine learning than ANNs
-\end{todo}
-
 As computing power has increased exponentially following Moore's law, \ac{ML} has become a more viable and effective method of prediction.
-In the 21st century, success has been found in increasing the number of layers in a neural network or other machine learning method rather than the complexity of each layer so that the raw data undergoes more levels of abstraction.
+In the 21st century, success has been found in increasing the number of layers in a neural network \reword{or other machine learning method} rather than the complexity of each layer so that the raw data undergoes more levels of abstraction.
 These \qt{deep neural networks} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
+As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to the input layers.
+An \ac{ANN} with too many parameters/too wide will just \qt{remember} the training data, i.e.\ overfit the data and not find any meaningful patterns in the data.
 
 \section{Modern techniques/tools}
 
@@ -142,9 +134,6 @@ The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 	\label{fig:ann-preds}
 \end{figure}
 
-As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to the input layers.
-An \ac{ANN} with too many parameters/too wide will just \qt{remember} the training data, i.e.\ overfit the data and not find any meaningful patterns in the data.
-
 \begin{todo}
 	Add some more information on how to choose the right size ANN.
 \end{todo}
@@ -152,11 +141,7 @@ An \ac{ANN} with too many parameters/too wide will just \qt{remember} the traini
 \subsection{Ordering of the datapoints}
 
 Due to the stochastic batch gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
-An example of this is seen in Figure~\ref{fig:compare-order}, where the same neural network has been trained on the example data which has been shuffled, reversed, randomised and separated.
-
-\begin{todo}
-	Expand on what these mean.
-\end{todo}
+An example of this is seen in Figure~\ref{fig:compare-order}, where the same neural network has been trained on the example data which has been ordered in three different ways: increasing \(x\), decreasing \(x\) and randomised.
 
 \begin{figure}[htbp]
 	\centering
@@ -166,7 +151,8 @@ An example of this is seen in Figure~\ref{fig:compare-order}, where the same neu
 \end{figure}
 
 \textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples and slowly working towards more difficult training examples.
+In a similar way to how \acp{ANN} were inspired by biological phenomena, this was inspired by how humans are taught simple examples before moving on to harder tasks.
 
-\begin{todo}
-	Expand on this topic.
-\end{todo}
+For example, when trained on a text dataset, the algorithm was trained on only texts using the vocabulary of 5,000 most common words.
+The vocabulary was expanded by 5,000 more words at intervals, allowing the algorithm to learn new words once it had mastered simpler words.
+When compared with an algorithm that had no curriculum, the curriculum-trained model took longer to reach the same error rate as it spent time early on focusing only on simple examples, but achieved a better error rate once the vocabulary was fully expanded.
