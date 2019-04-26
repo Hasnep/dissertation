@@ -2,33 +2,38 @@
 
 \chapter{Conclusion}
 
+If you're trying to discover something about the real world, these techniques all rely on the \ac{ANN} accurately reflecting reality which they probably don't.
+
+One problem with using \acp{GP} is that prediction with \(n\) training datapoints involves inverting an \(n \times n\) matrix, which makes it impractical for predicting many points quickly.
+On the other hand, \acp{ANN} take a long time to train, but once trained, predications only need weighted sums and the activation function, so predictions can be made very quickly.
+This means that this technique is not useful for live situations where an \acp{ANN} is being trained and an analysis is needed alongside the training.
+However, after an \ac{ANN} is trained, a \ac{GP} can be fitted and predictions pre-calculated which can then be used live.
+
 \section{How well have each of the attempts worked?}
 
-\begin{todo}
-	The stepwise regression was not as good as the LASSO technique, which worked quite well. \\
-	GPs were as good as expected.
-\end{todo}
+The stepwise regression was not as good as the \ac{LASSO} technique, which worked better.
+\acp{GP} were as good as expected.
 
 \section{What could be improved?}
 
 \section{How useful would more research on this topic be?}
 
 \begin{todo}
-	Clearly something pretty alright has been done, but it's not clear how well this would generalise to higher dimensions
+	Clearly something pretty alright has been done, but it's not clear how well this would generalise to more complex situations or higher dimensions
 \end{todo}
 
 \section{Future research}
 
 If using this, it would be sensible to first perform sensitivity analysis to find the significant variables.
 
-For more complex applications, the use of \acp{GP} could be extended to deep (or hierarchical) \acp{GP}, which are analogous to \acp{DNN} (see Section~\ref{sec:deep-learning}).
+For more complex applications, the use of \acp{GP} could be extended to deep (also known as hierarchical) \acp{GP}, which are analogous to \acp{DNN} (see Section~\ref{sec:deep-learning}).
 \reword{They involve} chaining the output of one \ac{GP} into another to better model nonlinearity~\autocite{damianou2013}.
 
-Use lasso as mean function and gp for everything else.
+One simple possibility to expend the models proposed would be to use multiple regression to find a trend and then use this as a mean function in a \ac{GP}.
 
-\section{Conclusion conclusion}
+\section{Conclusion's conclusion}
 
 Deep learning is fast becoming a \reword{ubiquitous tool} in many aspects of modern life --- sometimes clearly visible, as with driverless cars, but in some cases more discreetly, such as the use of \ac{ML} algorithms in American courts.
-As \acp{DNN} were designed to mimic a biological brain, a \reword{phenomenon} that is still not well understood, they are a \ac{black box} \reword{whose} reasoning is impossible to understand.
+As \acp{DNN} were designed to mimic a biological brain, a \reword{phenomenon} that is still not well understood, they are a \qt{black box} \reword{whose} reasoning is impossible to understand.
 Statistical methods such as \acp{GP} may offer a way to look inside this black box, as they offer a similar flexibility and wide range of uses, and are much more easily interpreted by humans.
 So far, much of the work that has been done involving \acp{GP} and \ac{ML} has been comparative, rather than using one to model the other.
