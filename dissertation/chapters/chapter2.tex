@@ -23,7 +23,7 @@ The perceptron was later generalised to the concept of the (artificial) neuron (
 
 \subsection{Artificial Neurons}
 
-A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function (or \qt{limiter function})~\(\phi(\x)\).
+A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function (or \qt{limiter function})~\(\phi\).
 
 The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 \begin{enumerate}
@@ -32,7 +32,7 @@ The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 	\item Then, the bias \(b \in \reals{}\) is added, which translates the output to a suitable range.
 	      The bias controls how large the weighted sum needs to be to \qt{activate} the neuron, so this is called the pre-activation \((v)\).
 	      \[ \text{pre-activation} = v = \sum_{i=1}^{n}{x_i w_i} + b \]
-	\item Finally, the activation function \(\phi(\x)\) is applied, which restricts the output to a range and introduces nonlinearity to the system.
+	\item Finally, the activation function \(\phi\) is applied, which restricts the output to a range and introduces nonlinearity to the system.
 	      The activation function must be differentiable if the gradient descent method is used (see Section~\ref{sec:backpropagation}).
 	      \[ \text{neuron output} = \hat{y} = \phi\left(\sum_{i=1}^{n}{x_i w_i} + b \right) \]
 \end{enumerate}
@@ -47,9 +47,9 @@ The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
 % \subsubsection{Activation functions}
 
 Early examples of artificial neurons were built in hardware \reword{with the output being a light that was either on or off.}
-This is equivalent to the \(\operatorname{sign}(\x)\) function, which is now only used for binary classification problems.
+This is equivalent to the \(\operatorname{sign}\) function, which is now only used for binary classification problems.
 It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
-Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh(\x)\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
+Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
 More recently, a popular used activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it \reword{works as well as it does} is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
@@ -124,7 +124,7 @@ To demonstrate the possibility of using statistical methods to understand the pr
 
 \subsection{Training a neural network}
 
-This function was learnt by a neural network with 8 layers, each with 10 neurons and the \(\tanh(\cdot)\) activation function, except for the final layer which used a linear activation function.
+This function was learnt by a neural network with 8 layers, each with 10 neurons and the \(\tanh\) activation function, except for the final layer which used a linear activation function.
 The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 
 \begin{figure}[htbp]
