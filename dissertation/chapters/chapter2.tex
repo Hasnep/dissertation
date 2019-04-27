@@ -2,30 +2,31 @@
 
 \chapter{Machine Learning}
 
-The rise in success that \ac{ML} and \ac{DL} \reword{have seen is down to two factors: the increase in computing power and the increase in data being collected rising.}
+The sudden rise in success of \ac{ML} and \ac{DL} is \reword{down to} an increase in computing power, particularly \acp{GPU} which can very quickly perform matrix operations, allowing for more complex models to be trained.
+Additionally, \ac{ML} requires large amounts of data, \reword{which is a requirement that has been met now}.
 
 \section{Artificial Neural Networks}
 
 One of the most popular types of \ac{ML} algorithm is the \ac{ANN}, a very general algorithm that has \reword{seen great sucess} in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
-It was chosen for this \reword{experiment} \note{?} because \note{finish this sentence}
+It was chosen for this \reword{experiment} \note{?} because of its popularity and widespread and varied use cases.
 
 \subsection{The Perceptron}
 
 In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
 At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
-Rosenblatt's \reword{biggest criticism} of these models was that while a deterministic algorithm could perform a single task perfectly, unlike a biological brain, it could not be generalised to perform any more tasks without substantial changes.
+Rosenblatt's \reword{biggest criticism} of these models was that while a deterministic algorithm could perform a single task perfectly; unlike a biological brain, it could not be generalised to perform more tasks without substantial reprogramming.
 He described deterministic models of the brain as \qtc[387]{rosenblatt1958}{amount[ing] simply to logical contrivances for performing particular algorithms \cut{} in response to sequences of stimuli}.
 Another way he wanted his synthetic brain to mirror biological brains was the property of redundancy, the ability to have pieces removed and still function, which is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
 
 It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt1958}{would require only a refinement or modification of existing principles}, but Rosenblatt questioned this idea, believing that the problem needed a more fundamental re-evaluation.
-At the heart of his idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
-The perceptron was later generalised to the concept of the (artificial) neuron (also called a \qt{unit}), which, instead of only giving a binary output, maps a number of real inputs to a single real output value.
+The crucial idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
+The perceptron was later generalised to the concept of the artificial neuron (also called a \qt{unit}), which, instead of only giving a binary output, maps a number of real inputs to a single real output value.
 
 \subsection{Artificial Neurons}
 
 A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function (or \qt{limiter function})~\(\phi\).
 
-The stages of a neuron, seen in Figure~\ref{fig:neuron-example}, are:
+The stages of a neuron with \(n\) inputs, seen in Figure~\ref{fig:neuron-example}, are:
 \begin{enumerate}
 	\item For an input vector \(\vec{x} \in \reals^n\) and a weight vector \(\vec{w} \in \reals^n\), take a weighted sum of the inputs, called a \qt{linear combiner}.
 	      \[ \text{linear combiner} = \sum_{i=1}^{n}{x_i w_i} \]
@@ -50,16 +51,15 @@ Early examples of artificial neurons were built in hardware \reword{with the out
 This is equivalent to the \(\operatorname{sign}\) function, which is now only used for binary classification problems.
 It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
 Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
-More recently, a popular used activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
-The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it \reword{works as well as it does} is not well understood.
+More recently, a popular activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
+The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it works as well as it does is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
 \subsection{Training} \label{sec:backpropagation}
 
 In the case of a \qt{feedforward} \ac{ANN}, the neurons are connected in sequential groups called layers, where each layer only receives information from the previous layer and only passes information to the subsequent layer.
 Convolutional and recurrent neural networks also exist in which the layers are not connected in series.
-A fully connected \ac{ANN} is one where every neuron in a layer is connected to every layer on the subsequent layer.
-% As seen in Figure~\ref{fig:neural-network-example}.
+A fully connected \ac{ANN} is one where every neuron in a layer is connected to every neuron on the subsequent layer, as seen in Figure~\ref{fig:neural-network-example}.
 
 \begin{figure}[htbp]
 	\centering
@@ -75,12 +75,12 @@ One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 	\item Input a dataset of \(n\) datapoints \(X = \vec{x}_1, \dots, \vec{x}_n\) with corresponding targets \(y_1, \dots, y_n\).
 	\item Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
 	\item \label{itm:begin-bp-loop} Use the training datapoint \(\vec{x}_i\) to make a prediction \(\hat{y}_i\).
-	\item Calculate the squared-error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = (\hat{y}_i - y_i)^2/2\).
-	\item The target is fixed, and the prediction cannot be directly changed, only the weights.
-	      Calculate the gradient of the error with respect to each of the weights \(j = 1, \dots, N\): \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\).
+	\item Calculate the squared error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = (\hat{y}_i - y_i)^2/2\).
+	\item To reduce this error, the weights must be altered, as the target is fixed and the prediction cannot be directly changed.
+	      Calculate the gradient of the error \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\) with respect to each of the weights \(j = N, \dots, 1\).
 		  The error at any particular layer only depends on the output of the subsequent layer and the weights connecting those two layers.
-		  By iteratively applying the chain rule at each layer, the calculation can propagate backwards though the layers until the derivative at any layers.
-	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), hence taking a step in the direction \(-\vec{\Delta}\) will most reduce the weights.
+		  By iteratively applying the chain rule, the calculation can propagate backwards though the layers.
+	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), so a step in the direction \(-\vec{\Delta}\) will most steeply reduce the error.
 	\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step-size hyperparameter, which controls how quickly the algorithm converges.
 \end{enumerate}
 The backpropagation algorithm will adjust the weights until either the error reaches below a certain threshold or the maximum number of epochs is reached.
@@ -91,25 +91,23 @@ An alternative is \qt{batch gradient descent}, where the sum of the squared erro
 \[ \vec{\varepsilon} = \frac{1}{2} \sum_{i = 1}^{n}\left(\hat{y}_i - y_i\right)^2. \]
 This means each epoch consists of \reword{only one very efficient step}, and so will converge in fewer epochs, however each epoch takes so long that this takes significantly longer to finish training.
 In practice, \qt{minibatches} are used, where a subsample of fixed size of the datapoints are used to train the model.
-This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible} to noise~\autocite[59]{thoma2017}.
+This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible to noise}~\autocite[59]{thoma2017}.
 
 Estimating the parameters of an \ac{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
 \section{Deep Learning} \label{sec:deep-learning}
 
-As computing power has increased exponentially following Moore's law, \ac{ML} has become a more viable and effective method of prediction.
-In the 21st century, success has been found in increasing the number of layers in a neural network \reword{or other machine learning method} rather than the complexity of each layer so that the raw data undergoes more levels of abstraction.
-These \qt{deep neural networks} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
-As \acp{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient changes to each layer get smaller and smaller as the backpropagation algorithm gets closer to the input layers.
-An \ac{ANN} with too many parameters/too wide will just \qt{remember} the training data, i.e.\ overfit the data and not find any meaningful patterns in the data.
+Although wider \acp{ANN} with many neurons on each layer had limited success in the 20th century, increasing the number of layers resulted in \iac{ANN} that was impractical to train using techniques and hardware of the time.
+It was only in the 1990s that training these \acp{DNN} became feasible, and then saw widespread success in the 21st century~\autocite[86]{schmidhuber2015}.
+\acp{DNN} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
 
-\section{Modern techniques/tools}
+Making a neural network deeper is not always a good idea, as \ac{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient at each layer gets smaller as the backpropagation algorithm gets closer to the input layers until the changes are insignificant.
+Additionally, an \ac{ANN} with too many parameters for the size of the training dataset can simply \qt{remember} the training data, \ie{}, overfit and reproduce the data and not find any meaningful patterns in the data.
 
 \ac{DL} has even made its way into consumer products.
 Many modern phones have facial recognition software built in, and \ac{AI} voice assistants are becoming more common in homes.
-
-\ac{DL} is also becoming more accessible, for example with the release of Google's \qt{Tensorflow} package for \ac{DL}~\autocite{abadi2016}, which is now available as \qt{Keras}, a user friendly package for Python~\autocite{chollet2015} and R~\autocite{allaire2018}.
+\ac{DL} is also becoming more accessible, for example with the release of Google's powerful \qt{Tensorflow} engine for \ac{DL}~\autocite{abadi2016}, which is now available as \qt{Keras}, a user friendly package for Python~\autocite{chollet2015} and R~\autocite{allaire2018}.
 
 \section{Example}
 
