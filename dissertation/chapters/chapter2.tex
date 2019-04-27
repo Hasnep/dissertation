@@ -50,7 +50,7 @@ Early examples of artificial neurons were built in hardware \reword{with the out
 This is equivalent to the \(\operatorname{sign}\) function, which is now only used for binary classification problems.
 It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
 Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
-More recently, a popular used activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input \(\operatorname{ReLU}(x) = \max(0, x)\).
+More recently, a popular used activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it \reword{works as well as it does} is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
@@ -68,17 +68,18 @@ A fully connected \ac{ANN} is one where every neuron in a layer is connected to 
 	\label{fig:neural-network-example}
 \end{figure}
 
-The weights in a neural network are optimised (or \qt{trained}) using the backpropagation algorithm.
+The weights in a neural network are optimised (or \qt{trained}) using gradient descent and the backpropagation algorithm.
 The weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 \begin{enumerate}
 	\item Input a dataset of \(n\) datapoints \(X = \vec{x}_1, \dots, \vec{x}_n\) with corresponding targets \(y_1, \dots, y_n\).
 	\item Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
 	\item \label{itm:begin-bp-loop} Use the training datapoint \(\vec{x}_i\) to make a prediction \(\hat{y}_i\).
-	\item Calculate the squared-error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = 1/2 (\hat{y}_i - y_i)^2\).
+	\item Calculate the squared-error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = (\hat{y}_i - y_i)^2/2\).
 	\item The target is fixed, and the prediction cannot be directly changed, only the weights.
 	      Calculate the gradient of the error with respect to each of the weights \(j = 1, \dots, N\): \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\).
-	      The error at each layer only depends on the weights of the later layers, so by applying the chain rule, the calculation can \qt{step back} though the layers until the first weights are reached.
+		  The error at any particular layer only depends on the output of the subsequent layer and the weights connecting those two layers.
+		  By iteratively applying the chain rule at each layer, the calculation can propagate backwards though the layers until the derivative at any layers.
 	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), hence taking a step in the direction \(-\vec{\Delta}\) will most reduce the weights.
 	\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step-size hyperparameter, which controls how quickly the algorithm converges.
 \end{enumerate}
@@ -89,7 +90,7 @@ Each datapoint moves the weights in a slightly different direction, so the optim
 An alternative is \qt{batch gradient descent}, where the sum of the squared errors for all the training data is calculated:
 \[ \vec{\varepsilon} = \frac{1}{2} \sum_{i = 1}^{n}\left(\hat{y}_i - y_i\right)^2. \]
 This means each epoch consists of \reword{only one very efficient step}, and so will converge in fewer epochs, however each epoch takes so long that this takes significantly longer to finish training.
-In practice, \qt{minibatches} are used, where a random subset of the datapoints are used to train the model.
+In practice, \qt{minibatches} are used, where a subsample of fixed size of the datapoints are used to train the model.
 This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible} to noise~\autocite[59]{thoma2017}.
 
 Estimating the parameters of an \ac{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
@@ -142,6 +143,7 @@ The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 
 Due to the stochastic batch gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
 An example of this is seen in Figure~\ref{fig:compare-order}, where the same neural network has been trained on the example data which has been ordered in three different ways: increasing \(x\), decreasing \(x\) and randomised.
+It seems that the first datapoints have the largest effect on the training of the model, leading to the weights reaching a local minimum where 
 
 \begin{figure}[htbp]
 	\centering
