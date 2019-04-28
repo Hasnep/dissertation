@@ -117,7 +117,7 @@ To demonstrate the possibility of using statistical methods to understand the pr
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{sin-x-dataset}
-	\caption{The true function \(f(x) = x + 5 \sin(x)\) (blue) and the 256 training points (red).}
+	\caption{The true function \(f(x) = x + 5 \sin(x)\) (\truthcolour) and the 256 training points (\traincolour).}
 	\label{fig:sin-x-dataset}
 \end{figure}
 
@@ -131,7 +131,7 @@ The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{ann-preds}
-	\caption{The true values (blue) and the ANN's predicted values (red).}
+	\caption{The true values (\truthcolour) and the ANN's predicted values (\anncolour).}
 	\label{fig:ann-preds}
 \end{figure}
 
@@ -145,7 +145,7 @@ It seems that the first datapoints have the largest effect on the training of th
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{compare-order}
-	\caption{The output of the same neural network trained on the same data but ordered differently.}
+	\caption{The output of the same neural network trained on the same data but ordered differently: in order (\inordercolour), reversed (\reversedcolour) and shuffled (\shuffledcolour).}
 	\label{fig:compare-order}
 \end{figure}
 
