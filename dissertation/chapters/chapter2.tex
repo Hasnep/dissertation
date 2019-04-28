@@ -7,7 +7,7 @@ Additionally, \ac{ML} requires large amounts of data, \reword{which is a require
 
 \section{Artificial neural networks}
 
-One of the most popular types of \ac{ML} algorithm is the \ac{ANN}, a very general algorithm that has \reword{seen great sucess} in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
+One of the most popular types of \ac{ML} algorithm is the \acl{ANN}, a very general algorithm that has \reword{seen great sucess} in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
 It was chosen for this \reword{experiment} \note{?} because of its popularity and widespread and varied use cases.
 
 \subsection{The perceptron}
@@ -57,9 +57,9 @@ If the activation function is the identity function, then optimising a neuron is
 
 \subsection{Training} \label{sec:backpropagation}
 
-In the case of a \qt{feedforward} \ac{ANN}, the neurons are connected in sequential groups called layers, where each layer only receives information from the previous layer and only passes information to the subsequent layer.
+In the case of a \qt{feedforward} \acl{ANN}, the neurons are connected in sequential groups called layers, where each layer only receives information from the previous layer and only passes information to the subsequent layer.
 Convolutional and recurrent neural networks also exist in which the layers are not connected in series.
-A fully connected \ac{ANN} is one where every neuron in a layer is connected to every neuron on the subsequent layer, as seen in Figure~\ref{fig:neural-network-example}.
+A fully connected \acl{ANN} is one where every neuron in a layer is connected to every neuron on the subsequent layer, as seen in Figure~\ref{fig:neural-network-example}.
 
 \begin{figure}[htbp]
 	\centering
@@ -68,12 +68,12 @@ A fully connected \ac{ANN} is one where every neuron in a layer is connected to 
 	\label{fig:neural-network-example}
 \end{figure}
 
-An efficient method to optimise (or \qt{train}) the weights in a neural network was not known until \textcite{linnainmaa1970} published his method of automatic differentiation, which was first applied to \acp{ANN} in \citeyear{werbos1982} by \textcite{werbos1982}.
+An efficient method to optimise (or \qt{train}) the weights in a neural network was not known until \textcite{linnainmaa1970} published his method of automatic differentiation, which was first applied to \aclp{ANN} in \citeyear{werbos1982} by \textcite{werbos1982}.
 The weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 \begin{enumerate}
 	\item Input a dataset of \(n\) datapoints \(X = \vec{x}_1, \dots, \vec{x}_n\) with corresponding targets \(y_1, \dots, y_n\).
-	\item Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
+	\item \label{itm:bp-iterate-datapoints} Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
 	\item \label{itm:begin-bp-loop} Use the training datapoint \(\vec{x}_i\) to make a prediction \(\hat{y}_i\).
 	\item Calculate the squared error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = (\hat{y}_i - y_i)^2/2\).
 	\item To reduce this error, the weights must be altered, as the target is fixed and the prediction cannot be directly changed.
@@ -93,17 +93,17 @@ This means each epoch consists of \reword{only one very efficient step}, and so 
 In practice, \qt{minibatches} are used, where a subsample of fixed size of the datapoints are used to train the model.
 This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible to noise}~\autocite[59]{thoma2017}.
 
-Estimating the parameters of an \ac{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
+Estimating the parameters of an \acl{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
 \section{Deep learning} \label{sec:deep-learning}
 
-Although wider \acp{ANN} with many neurons on each layer had limited success in the 20th century, increasing the number of layers resulted in \iac{ANN} that was impractical to train using techniques and hardware of the time.
+Although wider \aclp{ANN} with many neurons on each layer had limited success in the 20th century, increasing the number of layers resulted in \iacl{ANN} that was impractical to train using techniques and hardware of the time.
 It was only in the 1990s that training these \acp{DNN} became feasible, and then saw widespread success in the 21st century~\autocite[86]{schmidhuber2015}.
 \acp{DNN} \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
 
-Making a neural network deeper is not always a good idea, as \ac{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient at each layer gets smaller as the backpropagation algorithm gets closer to the input layers until the changes are insignificant.
-Additionally, an \ac{ANN} with too many parameters for the size of the training dataset can simply \qt{remember} the training data, \ie{}, overfit and reproduce the data and not find any meaningful patterns in the data.
+Making a neural network deeper is not always a good idea, as \acl{ANN} get deeper, they reach the \qt{vanishing gradient problem}, where the gradient at each layer gets smaller as the backpropagation algorithm gets closer to the input layers until the changes are insignificant.
+Additionally, an \acl{ANN} with too many parameters for the size of the training dataset can simply \qt{remember} the training data, \ie{}, overfit and reproduce the data and not find any meaningful patterns in the data.
 
 \ac{DL} has even made its way into consumer products.
 Many modern phones have facial recognition software built in, and \ac{AI} voice assistants are becoming more common in homes.
@@ -123,7 +123,9 @@ To demonstrate the possibility of using statistical methods to understand the pr
 
 \subsection{Training a neural network}
 
-This function was learnt by a neural network with 8 layers, each with 10 neurons and the \(\tanh\) activation function, except for the final layer which used a linear activation function.
+This function was learnt by a neural network with 8 hidden layers, each with 10 neurons and the \(\tanh\) activation function, and an output layer with a linear activation function.
+The \acl{ANN} was trained using batch gradient descent for 10,000 epochs.
+
 The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 
 \begin{figure}[htbp]
@@ -133,13 +135,10 @@ The result of this learning is seen in Figure~\ref{fig:ann-preds}.
 	\label{fig:ann-preds}
 \end{figure}
 
-\begin{todo}
-	Add some more information on how to choose the right size ANN.
-\end{todo}
-
 \subsection{Ordering of the datapoints}
 
 Due to the stochastic batch gradient descent used to train the model, if the order of the datapoints is not randomised, then the optimisation algorithm is significantly more likely to get stuck in a local minimum.
+This can be seen in step~\ref{itm:bp-iterate-datapoints} in Section~\ref{sec:backpropagation}, where the datapoints are iterated over sequentially.
 An example of this is seen in Figure~\ref{fig:compare-order}, where the same neural network has been trained on the example data which has been ordered in three different ways: increasing \(x\), decreasing \(x\) and randomised.
 It seems that the first datapoints have the largest effect on the training of the model, leading to the weights reaching a local minimum where 
 
@@ -151,7 +150,7 @@ It seems that the first datapoints have the largest effect on the training of th
 \end{figure}
 
 \textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples and slowly working towards more difficult training examples.
-In a similar way to how \acp{ANN} were inspired by biological phenomena, this was inspired by how humans are taught simple examples before moving on to harder tasks.
+In a similar way to how \aclp{ANN} were inspired by biological phenomena, this was inspired by how humans are taught simple examples before moving on to harder tasks.
 
 For example, when trained on a text dataset, the algorithm was trained on only texts using the vocabulary of 5,000 most common words.
 The vocabulary was expanded by 5,000 more words at intervals, allowing the algorithm to learn new words once it had mastered simpler words.

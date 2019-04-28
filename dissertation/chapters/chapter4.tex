@@ -3,17 +3,17 @@
 \chapter{Conclusion}
 
 You can use these methods to:
-Approximate the output of the \ac{ANN},
-Put the output of the \ac{ANN} in human understandable terms,
-Find which terms are significant in the \ac{ANN} model.
+Approximate the output of the \acl{ANN},
+Put the output of the \acl{ANN} in human understandable terms,
+Find which terms are significant in the \acl{ANN} model.
 
-If you're trying to discover something about the real world, these techniques all rely on the \ac{ANN} accurately reflecting reality which they probably don't.
-The fit of the statistical method will only be as good as the fit of the ANN, these techniques cannot diagnose a bad \ac{ANN}.
+If you're trying to discover something about the real world, these techniques all rely on the \acl{ANN} accurately reflecting reality which they probably don't.
+The fit of the statistical method will only be as good as the fit of the ANN, these techniques cannot diagnose a bad \acl{ANN}.
 
-One problem with using \acp{GP} is that prediction with \(n\) training datapoints involves inverting an \(n \times n\) matrix, which makes it impractical for predicting many points quickly.
-On the other hand, \acp{ANN} take a long time to train, but once trained, predications only need weighted sums and the activation function, so predictions can be made very quickly.
-This means that this technique is not useful for live situations where an \acp{ANN} is being trained and an analysis is needed alongside the training.
-However, after an \ac{ANN} is trained, a \ac{GP} can be fitted and predictions pre-calculated which can then be used live.
+One problem with using a \ac{GP} is that prediction with \(n\) training datapoints involves inverting an \(n \times n\) matrix, which makes it impractical for predicting many points quickly.
+On the other hand, \aclp{ANN} take a long time to train, but once trained, predication only involves calculating the output of each neuron, so predictions can be made very quickly.
+This means that this technique is not useful for live situations where an \aclp{ANN} is being trained and an analysis is needed alongside the training.
+However, after an \acl{ANN} is trained, a \ac{GP} can be fitted and predictions pre-calculated which can then be used live.
 
 \section{How well have each of the attempts worked?}
 
@@ -28,7 +28,7 @@ It is not clear how well these techniques would transfer to higher dimensions an
 
 \section{Future research}
 
-These techniques rely on the fit of the \ac{ANN} to recover the original information, and the \ac{ANN} could definitely fit better.
+These techniques rely on the fit of the \acl{ANN} to recover the original information, and the \acl{ANN} could definitely fit better.
 
 If using this, it would be sensible to first perform sensitivity analysis to find the significant variables.
 
