@@ -1,16 +1,16 @@
 % !TeX root = ..\dissertation.tex
 
-\chapter{Machine Learning}
+\chapter{Machine learning}
 
 The sudden rise in success of \ac{ML} and \ac{DL} is \reword{down to} an increase in computing power, particularly \acp{GPU} which can very quickly perform matrix operations, allowing for more complex models to be trained.
 Additionally, \ac{ML} requires large amounts of data, \reword{which is a requirement that has been met now}.
 
-\section{Artificial Neural Networks}
+\section{Artificial neural networks}
 
 One of the most popular types of \ac{ML} algorithm is the \ac{ANN}, a very general algorithm that has \reword{seen great sucess} in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
 It was chosen for this \reword{experiment} \note{?} because of its popularity and widespread and varied use cases.
 
-\subsection{The Perceptron}
+\subsection{The perceptron}
 
 In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
 At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
@@ -22,7 +22,7 @@ It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt
 The crucial idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
 The perceptron was later generalised to the concept of the artificial neuron (also called a \qt{unit}), which, instead of only giving a binary output, maps a number of real inputs to a single real output value.
 
-\subsection{Artificial Neurons}
+\subsection{Artificial neurons}
 
 A neuron is defined by its weight vector~\(\vec{w}\), its bias~\(b\) and its activation function (or \qt{limiter function})~\(\phi\).
 
@@ -96,7 +96,7 @@ This allows for a balance of training time and model quality, as larger batches 
 Estimating the parameters of an \ac{ANN} using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
-\section{Deep Learning} \label{sec:deep-learning}
+\section{Deep learning} \label{sec:deep-learning}
 
 Although wider \acp{ANN} with many neurons on each layer had limited success in the 20th century, increasing the number of layers resulted in \iac{ANN} that was impractical to train using techniques and hardware of the time.
 It was only in the 1990s that training these \acp{DNN} became feasible, and then saw widespread success in the 21st century~\autocite[86]{schmidhuber2015}.
