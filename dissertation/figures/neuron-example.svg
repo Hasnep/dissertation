@@ -49,25 +49,25 @@
       >pre-activation</text
       ><text x="360" y="-125" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >output</text
-      ><text x="-124" y="-83" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="-74" y="-83" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$x_1$</text
-      ><text x="35" y="-69" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="85" y="-69" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$w_1$</text
-      ><text x="-124" y="-23" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="-74" y="-23" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$x_2$</text
-      ><text x="35" y="4" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="85" y="4" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$w_2$</text
-      ><text x="-124" y="96" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="-74" y="96" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$x_n$</text
-      ><text x="36" y="83" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="86" y="83" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$w_n$</text
       ><text x="450" y="6" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$y$</text
-      ><text x="176" y="214" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="195" y="214" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$b$</text
-      ><text x="141" y="10" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="191" y="10" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$\Sigma$</text
-      ><text x="258" y="-10" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
+      ><text x="283" y="-10" style="fill:black; text-rendering:optimizeLegibility; stroke:none;" xml:space="preserve"
       >$\phi$</text
     ></g
   ></g
