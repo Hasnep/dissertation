@@ -2,23 +2,23 @@
 
 \chapter{Conclusion}
 
-You can use these methods to:
-Approximate the output of the \acl{ANN},
-Put the output of the \acl{ANN} in human understandable terms,
-Find which terms are significant in the \acl{ANN} model.
+You can use these methods to:\\
+Approximate the output of the neural network,\\
+Put the output of the neural network in human understandable terms,\\
+Find which terms are significant in the neural network model.\\
 
-If you're trying to discover something about the real world, these techniques all rely on the \acl{ANN} accurately reflecting reality which they probably don't.
-The fit of the statistical method will only be as good as the fit of the ANN, these techniques cannot diagnose a bad \acl{ANN}.
+If you're trying to discover something about the real world, these techniques all rely on the neural network accurately reflecting reality which they probably don't.
+The fit of the statistical method will only be as good as the fit of the neural network, these techniques cannot diagnose a bad neural network.
 
 % One problem with using a \ac{GP} is that prediction with \(n\) training datapoints involves inverting an \(n \times n\) matrix, which makes it impractical for predicting many points quickly.
-% On the other hand, \aclp{ANN} take a long time to train, but once trained, predication only involves calculating the output of each neuron, so predictions can be made very quickly.
-% This means that this technique is not useful for live situations where an \aclp{ANN} is being trained and an analysis is needed alongside the training.
-% However, after an \acl{ANN} is trained, a \ac{GP} can be fitted and predictions pre-calculated which can then be used live.
+% On the other hand, neural networks take a long time to train, but once trained, predication only involves calculating the output of each neuron, so predictions can be made very quickly.
+% This means that this technique is not useful for live situations where a neural network is being trained and an analysis is needed alongside the training.
+% However, after a neural network is trained, a \ac{GP} can be fitted and predictions pre-calculated which can then be used live.
 
 \section{How well have each of the attempts worked?}
 
 The stepwise regression was not as good as the \ac{LASSO} technique, which worked better.
-\acp{GP} were as good as expected.
+The \ac{GP} was good, as expected.
 
 It is not clear how well these techniques would transfer to higher dimensions and more complex situations as the \ac{GP} took a long time to fit, and the regression didn't fit that well on a simple example.
 
@@ -28,7 +28,7 @@ It is not clear how well these techniques would transfer to higher dimensions an
 
 \section{Future research}
 
-These techniques rely on the fit of the \acl{ANN} to recover the original information, and the \acl{ANN} could definitely fit better.
+These techniques rely on the fit of the neural network to recover the original information, and the neural network could definitely fit better.
 
 If using this, it would be sensible to first perform sensitivity analysis to find the significant variables.
 

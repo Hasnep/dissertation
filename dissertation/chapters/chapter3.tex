@@ -2,22 +2,23 @@
 
 \chapter{Opening the black box}
 
-\aclp{ANN} take a long time to train (calculus is hard) but can make predictions very quickly (arithmetic is easy).
-This means that once trained, we can very quickly get lots of data to give to the regression model or \ac{GP} or whatever.
-This means we're not limited by a lack of data from the \acl{ANN}.
+\reword{Neural networks take a long time to train (calculus is hard) but can make predictions very quickly (arithmetic is easy)}.
+This means that once trained, we can very quickly get lots of data to \reword{give to the regression model or \ac{GP} or whatever}.
+This means we're not limited by a lack of data from the neural network.
 
 \section{State of the art}
 
-The fact that \note{predicting from} an \acl{ANN} consist of many simple operations in a hierarchical structure suggests that it could be possible to mathematically or statistically explain or approximate their output.
+The fact that \reword{predicting from} a neural network consists of many simple operations in a hierarchical structure suggests that it could be possible to mathematically or statistically explain or approximate their output.
 
-\textcite[13]{cortez2013} trained a deep neural network on images and attempted to \qt{invert} it to reconstruct the original inputs.
+\textcite{mahendran2014} trained a deep neural network on images and attempted to \qt{invert} it to reconstruct the original inputs.
 They found that each successive layer abstracts the data, but isolating the specific neurons responsible for specific objects or ideas was more difficult.
-Sensitivity analysis has also been used to evaluate the importance of each input to an \acl{ANN} in the final output, and the results visualised as a decision tree where each branch represents a range of input values~
 
-There appears to be no literature on using \acp{GP} as a way to better understand how deep learning algorithms work or as a way to understand their structure, although there has been a fierce debate over the advantages of both \aclp{ANN} and \acp{GP} since at least the 1990s.
-\textcite[65--66]{rasmussen1997} gave evidence that \acp{GP} are a valid replacement for \aclp{ANN} in nonlinear problems with fewer than 1000 datapoints, although due to advances in processing power, \acl{ANN} algorithms and \ac{GP} techniques, this recommendation will likely have changed.
-\textcite[25]{mackay1997} gave an example of \acp{GP} being used for binary classification, in a similar way to \aclp{ANN}.
-When \ac{GPR} and \aclp{ANN} are compared, \reword{the main advantages mentioned} are usually faster convergence and confidence or credible intervals for the predictions, which \aclp{ANN} cannot do~\autocite{herbrich2003}.
+Sensitivity analysis has also been used to evaluate the importance of each input to a neural network in the final output, and the results visualised as a decision tree where each branch represents a range of input values~\autocite[13]{cortez2013}.
+
+There appears to be no literature on using \acp{GP} as a way to better understand how deep learning algorithms work or as a way to understand their structure, although there has been a fierce debate over the advantages of both neural networks and \acp{GP} since at least the 1990s.
+\textcite[65--66]{rasmussen1997} gave evidence that \acp{GP} are a valid replacement for neural networks in nonlinear problems with fewer than 1000 datapoints, although due to advances in processing power, neural network algorithms and \ac{GP} techniques, this recommendation will likely have changed.
+\textcite[25]{mackay1997} gave an example of \acp{GP} being used for binary classification, in a similar way to neural networks.
+When \ac{GPR} and neural networks are compared, \reword{the main advantages mentioned} are usually faster convergence and confidence or credible intervals for the predictions, which neural networks cannot do~\autocite{herbrich2003}.
 
 \section{Multiple regression}
 
@@ -72,7 +73,7 @@ We then use leave-one-out \ac{CV} to find the optimal hyperparameter \(\lambda\)
 \section{Gaussian processes}
 
 One proposed way to better understand \ac{DL} is by using \acp{GP} to approximate the output of a \ac{DL} algorithm.
-It has been shown that \reword{as the number of neurons in a layer of an} \acl{ANN} approaches infinity, the fit of the layer approaches that of a \ac{GP}.
+It has been shown that \reword{as the number of neurons in a layer of a} neural network approaches infinity, the fit of the layer approaches that of a \ac{GP}.
 
 \begin{todo}
 I need to find a source for that
@@ -85,13 +86,13 @@ In a similar way, \(Y\) is a \ac{GP} with a mean function \(\mu\) and a covarian
 Because a \ac{GP} is an extension of a multivariate normal distribution, any finite subset of points from a \ac{GP} has a multivariate normal distribution~\autocite[515]{williams1996}.
 
 \begin{todo}
-	Explain how a GP will help us understand the ANN. \\
-	GPs have statistical properties that we understand, so if we can fit a GP and then calculate these properties we can apply our knowledge to the ANN.
+	Explain how a GP will help us understand the neural network. \\
+	GPs have statistical properties that we understand, so if we can fit a GP and then calculate these properties we can apply our knowledge to the neural network.
 \end{todo}
 
 \subsection{Using Gaussian process regression}
 
-Because \acp{GP} are very flexible, applying a \ac{GP} to the output of the \acl{ANN} is likely to result in a close fit.
+Because \acp{GP} are very flexible, applying a \ac{GP} to the output of the neural network is likely to result in a close fit.
 
 \begin{figure}[htbp]
 	\centering
