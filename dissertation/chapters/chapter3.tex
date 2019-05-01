@@ -22,28 +22,37 @@ When \ac{GPR} and neural networks are compared, \reword{the main advantages ment
 
 \section{Multiple regression}
 
-One method of opening the black box of machine learning is to use multiple regression,where many basis functions are calculated and traditional regression is used on the resulting matrix in an attempt to uncover which are the \qt{true} functions.
-The number of basis functions can be increased arbitrarily, but will increase the fitting time. 
-
-In this case, the \reword{basis functions/basis vectors[?]} \(x\), \(x^2\), \(\sin(x)\), \(\sin(2x)\), \(\sin(x/2)\), \(\cos(x)\), \(\cos(2x)\) and \(\cos(x/2)\) were used.
-% The desired output would be that \(x + 5 \sin(x)\)
-This produced a complex model with many unwanted coefficients close to zero, but also many others far from zero, as seen in Table~\ref{tab:multiple-regression}.
-
-\begin{todo}
-	Expand on why I chose these basis functions/vectors.
-\end{todo}
-
-\includetable{multiple-regression}
+One method of opening the black box of machine learning is to use multiple regression on a series of basis functions.
+Many basis functions are calculated and traditional linear regression is used on the resulting matrix of predictors in an attempt to uncover which are the \qt{true} functions.
+This method requires that \reword{enough basis functions are used that the correct basis functions are in the model}.
+The number of basis functions can be increased arbitrarily, but this will increase the fitting time.
+This technique also requires regularisation to reduce the number of terms in the model, as there will likely be many terms with small coefficients that are determined to be significant.
 
 \begin{todo}
-	This is slightly cheating, but is feasible and a common technique. Find a source for this.
+	Danny seemed unconvinced by this. Find a source to legitimise this. \\
+	Why does this not violate the assumption that our predictors are independent?
 \end{todo}
+
+In this case, the basis functions \(x\), \(x^2\), \(\sin(x)\), \(\sin(2x)\), \(\sin(x/2)\), \(\cos(x)\), \(\cos(2x)\) and \(\cos(x/2)\) were used, where the desired output is that \(x\) will have a coefficient of 1 and \(\sin(x)\) will have a coefficient of 5.
+In this situation, the exact \qt{correct} terms are known, but in a \reword{real life apllication}, many more terms with different frequencies and offsets of \(\sin\) and \(\cos\) could be fitted and then removed using regularisation.
+Due to the imperfect fit of the neural network, it is unlikely that the desired coefficients will be selected exactly, so other coefficients will \reword{try to fix any phase problems}.
+
+\begin{todo}
+	Expand on why I chose these basis functions.
+\end{todo}
+
+Table~\ref{tab:multiple-regression} shows a summary of the fit of the regression model, where there are many unwanted coefficients close to zero, but also many others far from zero.
+This model requires regularisation to reduce the number of terms and to remove the terms with coefficients very close to zero.
 
 \subsection{Stepwise regression}
 
-It is then possible to use stepwise regression to reduce the number of parameters in this linear model by removing them and comparing.
+One way to regularising the model is to use stepwise regression to reduce the number of parameters by adding or removing one at a time and comparing the fit of the hierarchical models.
+For this scenario, it makes sense to use forward selection, where the initial model is empty and a term is added at each step, rather than backward selection, which starts with a full model and removes a term at each step.
+\reword{This is because we're trying to pick out the imprtant terms from a big lit of possibilities rather than remove a few unimportant terms.} 
 In this case, the variables were selected using the \ac{AIC}, which penalises the fit for having a higher number of coefficients.
-The results are seen in Table~\ref{tab:stepwise-regression}.
+The results of this regularisation are seen in Table~\ref{tab:stepwise-regression}.
+
+The coefficients are slightly different, as seen in Table~\ref{tab:compare-coefs}.
 
 \includetable{stepwise-regression}
 
@@ -72,16 +81,14 @@ We then use leave-one-out \ac{CV} to find the optimal hyperparameter \(\lambda\)
 
 \subsection{Comparison}
 
+Table~\ref{tab:compare-coefs} shows a comparison between the coefficients selected by the full model and the two regularisation methods.
+
 \includetable{compare-coefs}
 
 \section{Gaussian processes}
 
-One proposed way to better understand \ac{DL} is by using \acp{GP} to approximate the output of a \ac{DL} algorithm.
-It has been shown that \reword{as the number of neurons in a layer of a} neural network approaches infinity, the fit of the layer approaches that of a \ac{GP}.
-
-\begin{todo}
-I need to find a source for that
-\end{todo}
+One proposed way to better understand deep learning is by using \acp{GP} to approximate the output of a deep learning algorithm.
+It has been shown that \reword{as the number of neurons in a layer of a} neural network approaches infinity, the fit of the layer approaches a \ac{GP}~\autocite{neal1996}.
 
 \reword{In a similar way to how a} univariate normal distribution with a mean and variance can be generalised to a multivariate normal distribution with a mean vector and a normal vector, a \ac{GP} is the limit of extending a multivariate normal distribution to infinite dimensions, with a mean function and covariance function (sometimes also called a kernel in machine learning environments) which depends on the distance between two points.
 
