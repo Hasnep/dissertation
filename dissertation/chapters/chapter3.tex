@@ -54,17 +54,17 @@ This method is only likely to work with a perfect or near perfect fit with no no
 	expand this part
 \end{todo}
 
-\subsection{\acl{LASSO}}
+\subsection{LASSO}
 
-Alternatively, we can use the \ac{LASSO} method to select the significant variables from the full model.
-The \ac{LASSO} method constrains the sum of the absolute values of the model parameters, regularising the least influential parameters to zero.
-We vary the hyperparameter \(\lambda\) to change \reword{how regularised the coefficients are}, as seen in Figure~\ref{fig:lasso-lambda}.
+Alternatively, we can use \ac{LASSO} regularisation to select the significant variables from the full model.
+The \ac{LASSO} constrains the sum of the absolute values of the model parameters, regularising the least influential parameters to zero.
+We vary the hyperparameter \(\lambda\) to change the trade off between simplicity and fit accuracy, as seen in Figure~\ref{fig:lasso-lambda}.
 We then use leave-one-out \ac{CV} to find the optimal hyperparameter \(\lambda\), the results of which can be seen in Table~\ref{tab:lasso-coefs}.
 
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{lasso-lambda}
-	\caption{Changing the hyperparameter \(\lambda\).}
+	\caption{The effect on the coefficients when changing the regularisation hyperparameter \(\lambda\).}
 	\label{fig:lasso-lambda}
 \end{figure}
 
