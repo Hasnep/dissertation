@@ -2,8 +2,9 @@
 
 \chapter{Machine learning}
 
-The sudden rise in success of machine learning and \ac{DL} is \reword{down to} an increase in computing power, particularly \acp{GPU} which can very quickly perform matrix operations, allowing for more complex models to be trained.
-Additionally, machine learning requires large amounts of data, \reword{which is a requirement that has been met now}.
+The sudden rise in success of machine learning and deep learning is \reword{down to} an increase in computing power, particularly \acp{GPU} which are designed to perform matrix operations very efficiently.
+This has allowed for more complex models to be trained in reasonable times, particularly hierarchical models.
+% Now, more data than ever before is being collected, which allows machine learning requires to be effective.
 
 \section{Artificial neural networks}
 
@@ -51,7 +52,7 @@ Early examples of artificial neurons were built in hardware \reword{with the out
 This is equivalent to the \(\operatorname{sign}\) function, which is now only used for binary classification problems.
 It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
 Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
-More recently, a popular activation function for \ac{DL} (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
+More recently, a popular activation function for deep learning (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it works as well as it does is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
