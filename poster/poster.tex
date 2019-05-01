@@ -7,6 +7,8 @@
 \usecolortheme{exeter}
 \usepackage{graphicx}
 \usepackage{epstopdf}
+\epstopdfDeclareGraphicsRule{.eps}{pdf}{.pdf}{%
+    epstopdf --gsopt=-dCompatibilityLevel=1.5 #1 --outfile=\OutputFile}
 % \usepackage{booktabs}
 
 % Lengths
