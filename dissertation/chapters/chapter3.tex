@@ -10,6 +10,14 @@ This means we're not limited by a lack of data from the neural network.
 
 The fact that \reword{predicting from} a neural network consists of many simple operations in a hierarchical structure suggests that it could be possible to mathematically or statistically explain or approximate their output.
 
+When neural networks were originally trained on image classification problems, it was thought that each layer would successively combine features from the previous layer to form more complex structures.
+For example, a common machine learning problem is designing a neural network for classifying handwritten digits where the input is a vector of length \(n^2\) representing the brightness of each pixel in an \(n \times n\) image.
+A designer might plan for the first layer to pick out clusters of pixels, then the next layer would combine adjacent clusters into lines, the next layer would combine lines into corners, and the final layer would identify combinations of lines and corners as digits.
+However, once a neural network is trained on such a problem, the result is always that each neuron is activated by a seemingly random set of pixels, yet the neural network seems \reword{to perform well}.
+\begin{todo}
+	finish this paragraph
+\end{todo}
+
 \textcite{mahendran2014} trained a deep neural network on images and attempted to \qt{invert} it to reconstruct the original inputs.
 They found that each successive layer abstracts the data, but isolating the specific neurons responsible for specific objects or ideas was more difficult.
 
