@@ -138,20 +138,20 @@
 %% Code
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{textcomp}
-\definecolor{codegrey}{gray}{0.95}
+\usepackage{textcomp} % for upquote option
 \lstset{
-	backgroundcolor=\color{codegrey},
-	tabsize=2,
 	language=R,
 	basicstyle=\small\ttfamily\setstretch{0.9},
+	backgroundcolor=\color[gray]{0.95},
+	tabsize=2,
+	columns=fullflexible,
 	upquote=true,
-	columns=fullflexible ,
-	showstringspaces=false,
 	extendedchars=true,
+	showstringspaces=false,
 	showtabs=false,
 	showspaces=false,
 	showstringspaces=false,
+	otherkeywords={!,!=,~,\$,\&,\%/\%,\%*\%,\%\%,\%>\%,<-,<<-},
 	keywordstyle=\color[rgb]{0,0,1},
 	commentstyle=\color[rgb]{0.133,0.545,0.133},
 	stringstyle=\color[rgb]{0.627,0.126,0.941}
