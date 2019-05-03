@@ -83,9 +83,22 @@ Then leave-one-out cross-validation is used to find the optimal value for \(\lam
 
 \includetable{lasso-coefs}
 
-\subsection{Comparison}
+The \ac{LASSO} has removed many more terms than the stepwise regression, as seen in Table~\ref{tab:compare-coefs}.
 
-Table~\ref{tab:compare-coefs} shows a comparison between the coefficients selected by the full model and the two regularisation methods.
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{lasso-fit}
+	\caption{The fit of the \ac{LASSO} (\lassocolour) and the true function (\truthcolour).}
+	\label{fig:lasso-fit}
+\end{figure}
+
+\subsection{Comparison of linear regression models}
+
+Table~\ref{tab:compare-coefs} shows a comparison between the coefficients selected by the full model and the two regularised models.
+The \ac{LASSO} model removed many more terms that had coefficients close to zero than the stepwise regression model, and seems to have shown that the form of the equation for the neural network consists mainly of \(x\) and \(\sin(x)\) terms, with a small negative intercept.
+The \(\sin(x/2)\) coefficient is so small that it makes almost no difference to the model.
+Interpreting the stepwise regression model is slightly more difficult as there are more terms.
+The \(x\) and \(\sin(x)\) terms make up the majority of the fit, and most other coefficients are close to zero, leaving only a few phase shifting terms such as \(\sin(x/2)\).
 
 \includetable{compare-coefs}
 
