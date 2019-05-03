@@ -48,22 +48,24 @@ This model requires regularisation to reduce the number of terms and to determin
 
 \subsection{Stepwise regression}
 
-One way to regularising the model is to use stepwise regression to reduce the number of parameters by adding or removing one at a time and comparing the fit of the hierarchical models.
-For this scenario, it makes sense to use forward selection, where the initial model is empty and a term is added at each step, rather than backward selection, which starts with a full model and removes a term at each step.
-\reword{This is because we're trying to pick out the imprtant terms from a big lit of possibilities rather than remove a few unimportant terms.} 
+One way to regularise the model is to use stepwise regression to reduce the number of parameters.
+\reword{It does this by} adding or removing one term at a time and comparing the fit of the nested models.
 In this case, the variables were selected using the \ac{AIC}, which penalises the fit for having a higher number of coefficients.
-The results of this regularisation are seen in Table~\ref{tab:stepwise-regression}.
-
-The coefficients are slightly different, as seen in Table~\ref{tab:compare-coefs}.
-
+For this example, forward selection, where the initial model is empty and a term is added at each step, and backward selection, which starts with a full model and removes a term at each step, were used, both arrived at similar models, but the method with the lowest \ac{AIC} was to use both forward and backward selection.
+Table~\ref{tab:stepwise-regression} shows a summary of the reduced model.
 \includetable{stepwise-regression}
+The intercept and \(\cos(2x)\) terms were removed from the full model.
+The coefficients of some of the reduced model are slightly different from the full model to compensate for the removed terms, as seen in Table~\ref{tab:compare-coefs}.
 
 While the relevant estimators \(x\) and \(\sin(x)\) were identified and their coefficients fairly accurately estimated, a few other variables were also identified as significant.
 This method is only likely to work with a perfect or near perfect fit with no noise, which is unrealistic for real applications.
 
-\begin{todo}
-	expand this part
-\end{todo}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{stepwise-regression-fit}
+	\caption{The fit of the stepwise model.}
+	\label{fig:stepwise-regression-fit}
+\end{figure}
 
 \subsection{LASSO}
 
