@@ -148,7 +148,15 @@ This structure has 801 parameters to optimise, the 720 weights seen in Figure~\r
 The neural network was trained using both batch gradient descent and minibatches of 32 datapoints.
 The choice of gradient descent algorithm did not make much difference to the fit, likely due to the simplicity of the function being learnt, so minibatches were chosen.
 The neural net was trained for 2,000 epochs to ensure that the weights had stably converged and the training had finished.
+This can be seen in Figure~\ref{fig:training-history}. \begin{todo}	expand that sentence\end{todo}
 The final result of this training process is seen in Figure~\ref{fig:nn-fit}.
+
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{training-history}
+	\caption{The mean squared error at different epochs.}
+	\label{fig:training-history}
+\end{figure}
 
 \begin{figure}[htbp]
 	\centering
