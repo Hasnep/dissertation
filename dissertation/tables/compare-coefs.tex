@@ -1,20 +1,20 @@
 \begin{table}[!h]
 
-\caption{\label{tab:compare-coefs}The coefficients of the three regression models}
+\caption{\label{tab:compare-coefs}The coefficients of the three linear regression models.}
 \centering
 \begin{tabular}{lrrr}
 \toprule
 Term & \makecell[r]{Multiple\\regression} & \makecell[r]{Stepwise\\regression} & LASSO\\
 \midrule
-Intercept & -0.011 &  & -0.029\\
-\(x\) & 0.947 & 0.947 & 0.938\\
-\(x^2\) & 0.000 & 0.000 & \\
-\(\sin(x)\) & 4.861 & 4.861 & 4.722\\
-\(\sin(2x)\) & -0.079 & -0.079 & \\
-\(\sin(x/2)\) & -0.152 & -0.152 & -0.004\\
-\(\cos(x)\) & -0.057 & -0.054 & \\
-\(\cos(2x)\) & 0.034 &  & \\
-\(\cos(x/2)\) & 0.090 & 0.093 & \\
+Intercept & 0.055 &  & 0.094\\
+\(x\) & 1.034 & 1.034 & 1.026\\
+\(x^2\) & 0.000 & 0.001 & \\
+\(\sin(x)\) & 4.811 & 4.812 & 4.721\\
+\(\sin(2x)\) & 0.030 & 0.030 & \\
+\(\sin(x/2)\) & 0.008 &  & \\
+\(\cos(x)\) & 0.114 & 0.113 & 0.024\\
+\(\cos(2x)\) & 0.086 & 0.089 & \\
+\(\cos(x/2)\) & 0.128 & 0.116 & 0.045\\
 \bottomrule
 \end{tabular}
 \end{table}
