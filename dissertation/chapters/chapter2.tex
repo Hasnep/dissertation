@@ -148,13 +148,13 @@ This structure has 801 parameters to optimise, the 720 weights seen in Figure~\r
 The neural network was trained using both batch gradient descent and minibatches of 32 datapoints.
 The choice of gradient descent algorithm did not make much difference to the fit, likely due to the simplicity of the function being learnt, so minibatches were chosen.
 The neural net was trained for 2,000 epochs to ensure that the weights had stably converged and the training had finished.
-The final result of this training process is seen in Figure~\ref{fig:ann-preds}.
+The final result of this training process is seen in Figure~\ref{fig:nn-fit}.
 
 \begin{figure}[htbp]
 	\centering
-	\includesvg[width=\figwidth]{ann-preds}
+	\includesvg[width=\figwidth]{nn-fit}
 	\caption{The true values (\truthcolour) and the neural network's predicted values (\anncolour).}
-	\label{fig:ann-preds}
+	\label{fig:nn-fit}
 \end{figure}
 
 \subsection{Ordering of the datapoints}
@@ -213,7 +213,7 @@ Shuffled and deterministically separating the datapoints meant that the validati
 \end{figure}
 
 Once the validation split was set to 0\%, all of the ordering methods produced similar results.
-The example neural network model seen in Figure~\ref{fig:ann-preds} and used from now on is one trained with this issue fixed. 
+The example neural network model seen in Figure~\ref{fig:nn-fit} and used from now on is one trained with this issue fixed. 
 
 \textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses the ordering of the datapoints to improve training by starting with easier training examples and slowly working towards more difficult training examples.
 In a similar way to how neural networks were inspired by biological phenomena, this was inspired by how humans are taught simple examples before moving on to harder tasks.
