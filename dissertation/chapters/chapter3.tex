@@ -135,4 +135,25 @@ Because \acp{GP} are very flexible, applying a \ac{GP} to the output of the neur
 
 The fit of the \ac{GP} to the neural network is almost perfect.
 
+\section{Combining regression and Gaussian processes}
 
+The fit of the \ac{LASSO} model is not perfect, as seen in Figure~\ref{fig:lasso-fit}.
+One possible way to improve the fit of this model is to use a \ac{GP} to capture the residuals of the \ac{LASSO} model.
+The residuals of the model are seen in Figure~\ref{fig:gp-resids-fit}, where a \ac{GP} has been fitted.
+
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{gp-resids-fit}
+	\caption{The fit of the \ac{GP} to the residuals of the \ac{LASSO} model.}
+	\label{fig:gp-resids-fit}
+\end{figure}
+
+Figure~\ref{fig:combined-fit} shows the two models summed together.
+Judging by eye, the fit is essentially perfect, and using this method gives a good understanding of the form of the formula for the neural network's output and also some information about the residuals captured by the \ac{GP}.
+
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{combined-fit}
+	\caption{The fit of the combined \ac{LASSO} and \ac{GP} model (\combinedcolour) and the neural network (\nncolour).}
+	\label{fig:combined-fit}
+\end{figure}
