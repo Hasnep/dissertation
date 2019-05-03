@@ -69,15 +69,15 @@ This method is only likely to work with a perfect or near perfect fit with no no
 
 \subsection{LASSO}
 
-Alternatively, we can use \ac{LASSO} regularisation to select the significant variables from the full model.
+A more modern alternative to stepwise regression is \ac{LASSO} regularisation.
 The \ac{LASSO} constrains the sum of the absolute values of the model parameters, regularising the least influential parameters to zero.
-We vary the hyperparameter \(\lambda\) to change the trade off between simplicity and fit accuracy, as seen in Figure~\ref{fig:lasso-lambda}.
-We then use leave-one-out cross-validation to find the optimal hyperparameter \(\lambda\), the results of which can be seen in Table~\ref{tab:lasso-coefs}.
+The hyperparameter \(\lambda\) controls the trade off between model simplicity and fit accuracy, as seen in Figure~\ref{fig:lasso-lambda}.
+Then leave-one-out cross-validation is used to find the optimal value for \(\lambda\), the results of which can be seen in Table~\ref{tab:lasso-coefs}.
 
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{lasso-lambda}
-	\caption{The effect on the coefficients when changing the regularisation hyperparameter \(\lambda\).}
+	\caption{The effect on the coefficients when changing the regularisation hyperparameter \(\lambda\) and the optimised value of \(\lambda\) (dashed red).}
 	\label{fig:lasso-lambda}
 \end{figure}
 
