@@ -2,7 +2,7 @@
 
 \chapter{Machine learning}
 
-The sudden rise in success of machine learning and deep learning is largely due to an increase in computing power, particularly \acp{GPU} which are designed to perform matrix operations very efficiently.
+The sudden rise in success of machine learning is largely due to an increase in computing power, particularly \acp{GPU} which are designed to perform matrix operations very efficiently.
 This has allowed for more complex hierarchical models such as deep neural networks to be trained on large amounts of data in a reasonable amount time.
 
 \section{Artificial neural networks}
@@ -69,7 +69,7 @@ A fully connected (or dense) neural network is one where every neuron in a layer
 	\label{fig:neural-network-example}
 \end{figure}
 
-An efficient method to optimise (or \qt{train}) the weights in a neural network was not known until \textcite{linnainmaa1970} published his method of automatic differentiation, which was first applied to neural networks in 1982 by \textcite{werbos1982}.
+An efficient method to optimise (or \qt{train}) the weights in a neural network was not known until \textcite{linnainmaa1970} published his method of automatic differentiation, which was first applied to neural networks by \textcite{werbos1982}.
 To perform the backpropagation algorithm, the weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 \begin{enumerate}
@@ -80,7 +80,7 @@ One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 	\item The neural network's weights must be altered to reduce this error, as the target is fixed and the prediction cannot be directly changed.
 	      Calculate the gradient of the error \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\) with respect to each of the weights \(j = N, \dots, 1\).
 		  The error at any particular layer only depends on the output of the subsequent layer and the weights connecting those two layers.
-		  By iteratively applying the chain rule, the calculation can propagate backwards though the layers.
+		  By starting at the output layer where the error is known and iteratively applying the chain rule, the calculation can propagate backwards though the layers.
 	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), so a step in the direction \(-\vec{\Delta}\) will produce the largest decrease in the error.
 	\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step size hyperparameter, called the \qt{learning rate}, which controls how quickly the algorithm converges.
 \end{enumerate}
@@ -90,7 +90,7 @@ This is called \qt{stochastic gradient descent} (also called \qt{online gradient
 Each datapoint moves the weights in a slightly different direction, so the optimisation process zigzags towards the optimum, rather than taking the steepest path.
 An alternative is \qt{batch gradient descent}, where the sum of the squared errors for all the training data is calculated:
 \[ \vec{\varepsilon} = \frac{1}{2} \sum_{i = 1}^{n}\left(\hat{y}_i - y_i\right)^2. \]
-This means each epoch consists of only one step, but this step takes account of all the data points, and so will converge in fewer epochs, however each epoch takes so long to compute that this takes significantly longer to train.
+This means each epoch consists of only one step, but this step takes account of all the datapoints, and so will converge in fewer epochs, however each epoch takes so long to compute that this takes significantly longer to train.
 In practice, \qt{minibatches} are used, where the dataset is split into small groups, normally 32 datapoints or fewer, which are used to train the model.
 This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more susceptible to being affected by noise~\autocite[59]{thoma2017}.
 
@@ -99,8 +99,8 @@ It is quite rare for the algorithm to get trapped in a local minimum, but a more
 
 \section{Deep learning} \label{sec:deep-learning}
 
-Although wider neural networks with many neurons on each layer had some mixed success in the 20th century, increasing the number of layers resulted in a neural network that was impractical to train using techniques and hardware of the time.
-It was only in the 1990s that training these deep neural networks became feasible, leading to the widespread success of deep neural networks in the 21st century~\autocite[86]{schmidhuber2015}.
+Although wider neural networks with many neurons on each layer had some mixed success in the 20th century, when the number of layers was increased, the resulting neural network was impractical to train with the techniques and hardware of the time.
+It was only in the 1990s that training these deep neural networks became feasible, leading to the widespread success of deep learning in the 21st century~\autocite[86]{schmidhuber2015}.
 Deep neural networks \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
 
 Making a neural network deeper will not always improve the model.
@@ -132,7 +132,7 @@ The Keras package for R \autocite{allaire2018} was used to create and train a ne
 
 The number of hidden layers in the neural network was slowly increased from 0 (linear regression) until the fit seemed reasonable at 8 hidden layers with 10 neurons each.
 The number of neurons in each layer was kept relatively small, as this particular problem is likely to require more levels of abstraction (depth) rather than an ability to store lots of information.
-The \(\tanh\) activation function \reword{was at first chosen semi-arbitrarily due to its trigonometric-ness/trigonometric asociation/trigonometric properties?}, but after being compared to the \ac{ReLU}, sigmoid and softmax activation functions, it was determined to be the best (see Section~\ref{sec:activation-functions} for a description of each of these functions).
+The \(\tanh\) activation function was chosen as the most suitable for this task after being compared with the \ac{ReLU}, sigmoid and softmax activation functions, (see Section~\ref{sec:activation-functions} for a description of each of these functions).
 A linear activation function was required for the output neuron so that the neural network's predictions were not limited to the range of the activation function.
 
 The final architecture of the neural network was a fully-connected, feedforward neural network with 8 hidden layers, each with 10 neurons and the \(\tanh\) activation function, and an output layer with a linear activation function.
@@ -146,9 +146,9 @@ This structure has 801 parameters to optimise, the 720 weights seen in Figure~\r
 \end{figure}
 
 The neural network was trained using both batch gradient descent and minibatches of 32 datapoints.
-The choice of gradient descent algorithm did not make much difference to the fit, likely due to the simplicity of the function being learnt, so minibatches were chosen.
+The choice of gradient descent algorithm did not make much difference to the fit, likely due to the simplicity of the function being learnt, so minibatches were chosen to allow the algorithm to more easily get out of valleys (see Section~\ref{sec:ordering}).
 The neural net was trained for 2,000 epochs to ensure that the weights had stably converged and the training had finished.
-This can be seen in Figure~\ref{fig:training-history}. \begin{todo}	expand that sentence\end{todo}
+This can be seen in Figure~\ref{fig:training-history}, where the mean squared error stops improving or improves very slowly after a few hundred epochs.
 The final result of this training process is seen in Figure~\ref{fig:nn-fit}.
 
 \begin{figure}[htbp]
@@ -161,11 +161,11 @@ The final result of this training process is seen in Figure~\ref{fig:nn-fit}.
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{nn-fit}
-	\caption{The true values (\truthcolour) and the neural network's predicted values (\anncolour).}
+	\caption{The true values (\truthcolour) and the neural network's predicted values (\nncolour).}
 	\label{fig:nn-fit}
 \end{figure}
 
-\subsection{Ordering of the datapoints}
+\subsection{Ordering of the datapoints} \label{sec:ordering}
 
 The training dataset was constructed with the \(x\) values increasing.
 However, when the neural network was first trained on this dataset, the algorithm seemed to always get stuck in a local minimum, as seen in Figure~\ref{fig:compare-order-ascending}, where the fit on the right-hand side is very bad.
@@ -186,12 +186,12 @@ This way each minibatch would contain an even spread of datapoints.
 This deterministic approach also resulted in a good fit, seen in Figure~\ref{fig:compare-order-deterministic}.
 
 However, when the neural network was trained using batch gradient descent, this problem did not go away.
-Batch gradient calculates the error for all the datapoints at once, so should not be affected by the order of the datapoints.
+Batch gradient descent calculates the error for all the datapoints at once, so should not be affected by the order of the datapoints.
 This lead me to discover that the problem was actually to do with how I was using an 80\%/20\% training/validation split to cross-validate the neural network.
-My mistake was assuming that Keras was choosing a random sample of data points for each subset, where it was actually choosing the first 80\% for the training data and holding back the remaining 20\% for the validation set.
-This meant that when the datapoints were sorted, the right-hand side was in the validation set, and so wasn't used for training.
+My mistake was assuming that Keras was choosing a random sample of datapoints for each subset, when it was actually choosing the first 80\% for the training data and holding back the remaining 20\% for the validation set.
+This meant that when the datapoints were sorted by ascending \(x\), the right-hand side was in the validation set, and so wasn't used for training.
 Similarly, when reversed, the left-hand side was in the validation set.
-Shuffled and deterministically separating the datapoints meant that the validation set was a representative sample of the dataset, and so did not bias the model.
+Shuffling and deterministically separating the datapoints meant that the validation set was a representative sample of the dataset, and so did not bias the model.
 
 \begin{figure}[htbp]
 	\vspace*{-3cm}
@@ -216,16 +216,17 @@ Shuffled and deterministically separating the datapoints meant that the validati
         \caption{Deterministic}
         \label{fig:compare-order-deterministic}
 	\end{subfigure}
-	\caption{The output of the same neural network trained on the same data but ordered differently: in order (\inordercolour), reversed (\reversedcolour) and shuffled (\shuffledcolour) compared to the true function (\truthcolour).}
+	\caption{The output of the same neural network trained on the same data but ordered differently: with \(x\) ascending (\ascendingcolour), with \(x\)descending (\descendingcolour), shuffled (\shuffledcolour) and deterministically separated (\deterministiccolour) compared to the true function (\truthcolour).}
 	\label{fig:compare-order}
 \end{figure}
 
 Once the validation split was set to 0\%, all of the ordering methods produced similar results.
-The example neural network model seen in Figure~\ref{fig:nn-fit} and used from now on is one trained with this issue fixed. 
+The example neural network model seen in Figure~\ref{fig:nn-fit} and used from now on is one trained with this issue fixed.
+However, there is still a small spike at \(x=0\) that I do not know how to fix. 
 
 \textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses the ordering of the datapoints to improve training by starting with easier training examples and slowly working towards more difficult training examples.
 In a similar way to how neural networks were inspired by biological phenomena, this was inspired by how humans are taught simple examples before moving on to harder tasks.
 
 For example, when trained on a text dataset, the algorithm was trained on only texts using the vocabulary of 5,000 most common words.
-The vocabulary was expanded by 5,000 more words at intervals, allowing the algorithm to learn new words once it had mastered simpler words.
-When compared with an algorithm that had no curriculum, the curriculum-trained model took longer to reach the same error rate as it spent time early on focusing only on simple examples, but achieved a better error rate once the vocabulary was fully expanded.
+The vocabulary was expanded by 5,000 words at intervals, allowing the algorithm to learn new words once it had mastered simpler words.
+When compared with an algorithm that had no curriculum, the curriculum-trained model took longer to reach the same minimum error rate became it spent time early on focusing only on simple examples, but it was then able to surpass the normal algorithm once its vocabulary was fully expanded.
