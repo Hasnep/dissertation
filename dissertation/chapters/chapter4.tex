@@ -2,45 +2,21 @@
 
 \chapter{Conclusion}
 
-You can use these methods to:\\
-Approximate the output of the neural network,\\
-Put the output of the neural network in human understandable terms,\\
-Find which terms are significant in the neural network model.\\
+The methods discussed in this project have been successfully fitted to the output of a deep neural network and used to learn more about its properties.
+The form of the equation used to train the neural network was recovered by fitting a linear model with a series of basis functions.
+Regularisation techniques allowed the model to be simplified further to only a few interpretable terms.
+The \ac{LASSO} worked much better than stepwise regression to select a few important terms and also allows for more fine control of the regularisation strength.
+\acp{GP} also were used to provide a nonparametric method to understand the neural network, and also managed to capture the residuals of the \ac{LASSO} model.
 
-If you're trying to discover something about the real world, these techniques all rely on the neural network accurately reflecting reality which they probably don't.
-The fit of the statistical method will only be as good as the fit of the neural network, these techniques cannot diagnose a bad neural network.
+These tests have relied on the fit of the neural network to be sufficiently good that the original function can be recovered.
+In realistic applications, the process that produced the data is unknown, so there is no way to check how accurate the regression's understanding is.
+Further testing with more complex training datasets would need to be done to see how well these techniques generalise to higher dimensions and more complex functions.
+% If used on real datasets, it would be sensible to first perform sensitivity analysis to find significant variables.
 
-% One problem with using a \ac{GP} is that prediction with \(n\) training datapoints involves inverting an \(n \times n\) matrix, which makes it impractical for predicting many points quickly.
-% On the other hand, neural networks take a long time to train, but once trained, predication only involves calculating the output of each neuron, so predictions can be made very quickly.
-% This means that this technique is not useful for live situations where a neural network is being trained and an analysis is needed alongside the training.
-% However, after a neural network is trained, a \ac{GP} can be fitted and predictions pre-calculated which can then be used live.
+For more complex applications, the use of \acp{GP} could be extended to deep (also known as hierarchical) \acp{GP}, which are analogous to deep neural networks.
+They involve chaining the output of one \ac{GP} into another to better model nonlinearity~\autocite{damianou2013}.
 
-\section{How well have each of the attempts worked?}
-
-The stepwise regression was not as good as \ac{LASSO} regularisation, which worked better.
-The \ac{GP} was good, as expected.
-
-It is not clear how well these techniques would transfer to higher dimensions and more complex situations as the \ac{GP} took a long time to fit, and the regression didn't fit that well on a simple example.
-
-\section{What could be improved?}
-
-\section{How useful would more research on this topic be?}
-
-\section{Future research}
-
-These techniques rely on the fit of the neural network to recover the original information, and the neural network could definitely fit better.
-
-If using this, it would be sensible to first perform sensitivity analysis to find the significant variables.
-
-For more complex applications, the use of \acp{GP} could be extended to deep (also known as hierarchical) \acp{GP}, which are analogous to deep neural networks (see Section~\ref{sec:deep-learning}).
-\reword{They involve} chaining the output of one \ac{GP} into another to better model nonlinearity~\autocite{damianou2013}.
-
-One simple possibility to extend the models proposed would be to use multiple regression to find a trend and then use this as a mean function in a \ac{GP}.
-This should allow the regression to capture most of the pattern and then the \ac{GP} will provide a flexible way to capture the residuals.
-
-\section{Conclusion's conclusion}
-
-Deep learning is fast becoming a \reword{ubiquitous tool} in many aspects of modern life --- sometimes clearly visible, as with driverless cars, but in some cases more discreetly, such as the use of machine learning algorithms in American courts.
-As deep neural networks were designed to mimic a biological brain, a \reword{phenomenon} that is still not well understood, they are a \qt{black box} \reword{whose} reasoning is impossible to understand.
+Deep learning is fast becoming a widespread tool in many aspects of modern life --- sometimes clearly visible, as with driverless cars, but in some cases more discreetly, such as the use of machine learning algorithms in the U.S.\ judicial system.
+As deep neural networks were designed to mimic biological brains which are still not well understood, they are a \qt{black box} whose reasoning is impossible to understand.
 Statistical methods such as \acp{GP} may offer a way to look inside this black box, as they offer a similar flexibility and wide range of uses, and are much more easily interpreted by humans.
 So far, much of the work that has been done involving \acp{GP} and machine learning has been comparative, rather than using one to model the other.
