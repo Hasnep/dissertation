@@ -2,25 +2,25 @@
 
 \chapter{Machine learning}
 
-The sudden rise in success of machine learning and deep learning is \reword{down to} an increase in computing power, particularly \acp{GPU} which are designed to perform matrix operations very efficiently.
-This has allowed for more complex models to be trained in reasonable times, particularly hierarchical models.
-% Now, more data than ever before is being collected, which allows machine learning requires to be effective.
+The sudden rise in success of machine learning and deep learning is largely due to an increase in computing power, particularly \acp{GPU} which are designed to perform matrix operations very efficiently.
+This has allowed for more complex hierarchical models such as deep neural networks to be trained on large amounts of data in a reasonable amount time.
 
 \section{Artificial neural networks}
 
-One of the most popular types of machine learning algorithm is the artificial neural network, a very general algorithm that has \reword{seen great sucess} in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
-It was chosen for this project because of its popularity and widespread and varied use cases.
+One of the most popular types of machine learning algorithm is the artificial neural network, a parametric model that has seen widespread success in performing regression and classification tasks, as well as in other contexts such as reinforcement learning.
+It was chosen for this project because of its popularity and varied use cases.
 
 \subsection{The perceptron}
 
 In 1957, psychologist Frank Rosenblatt proposed a stochastic electronic brain model, which he called a \qt{perceptron}~\autocite{rosenblatt1957}.
 At the time, most models of the brain were deterministic algorithms which could recreate a single neural phenomenon such as memorisation or object recognition.
-Rosenblatt's \reword{biggest criticism} of these models was that while a deterministic algorithm could perform a single task perfectly; unlike a biological brain, it could not be generalised to perform more tasks without substantial reprogramming.
+Rosenblatt's biggest objection to these models was that while a deterministic algorithm could perform a single task perfectly; unlike a biological brain, it could not be generalised to perform more tasks without substantial reprogramming.
 He described deterministic models of the brain as \qtc[387]{rosenblatt1958}{amount[ing] simply to logical contrivances for performing particular algorithms \cut{} in response to sequences of stimuli}.
-Another way he wanted his synthetic brain to mirror biological brains was the property of redundancy, the ability to have pieces removed and still function, which is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
+He also wanted his synthetic brain to mirror biological brains' redundancy, the ability to have pieces removed and still function.
+This is not possible for deterministic algorithms where even a small change to a circuit or a line of code can stop all functionality.
 
 It was a commonly held belief that deterministic algorithms \qtc[387]{rosenblatt1958}{would require only a refinement or modification of existing principles}, but Rosenblatt questioned this idea, believing that the problem needed a more fundamental re-evaluation.
-The crucial idea was the \qt{perceptron}, which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
+The result of his work was the \qt{perceptron}, a machine which could -- through repeated training and testing -- receive a set of inputs and reliably give a correct binary response.
 The perceptron was later generalised to the concept of the artificial neuron (also called a \qt{unit}), which, instead of only giving a binary output, maps a number of real inputs to a single real output value.
 
 \subsection{Artificial neurons}
@@ -48,17 +48,17 @@ The stages of a neuron with \(n\) inputs, seen in Figure~\ref{fig:neuron-example
 
 \subsection{Activation functions} \label{sec:activation-functions}
 
-Early examples of artificial neurons were built in hardware \reword{with the output being a light that was either on or off.}
+Early examples of artificial neurons were built in hardware, where the output would be a bulb that was either on or off.
 This is equivalent to the \(\operatorname{sign}\) function, which is now only used for binary classification problems.
-It is not useful for connecting to another neuron, as information about the magnitude of the output is lost.
-Commonly, the sigmoid function \(S(x) = 1/(1 + e^{-x})\), the \(\tanh\) function or the \qt{softmax} function (a generalisation of the logistic function to higher dimensions) are used.
-More recently, a popular activation function for deep learning (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
+It is not useful for connecting to other neurons, as information about the magnitude of the output is lost.
+Commonly, the sigmoid function, defined as \(S(x) = 1/(1 + e^{-x})\); the \qt{softmax} function, a generalisation of the logistic function to higher dimensions or the \(\tanh\) function are used.
+A popular activation function for deep learning (see Section~\ref{sec:deep-learning}) is the \ac{ReLU} function~\autocite{ramachandran2017}, which is defined as the positive part of its input, \ie{}, \(\operatorname{ReLU}(x) = \max(0, x)\).
 The \ac{ReLU} function was designed to be analogous to how a biological neuron can be either inactive or active, although why it works as well as it does is not well understood.
 If the activation function is the identity function, then optimising a neuron is equivalent to performing linear regression.
 
 \subsection{Training} \label{sec:backpropagation}
 
-In the case of a \qt{feedforward} neural netowrk, the neurons are connected in sequential groups called layers, where each layer only receives information from the previous layer and only passes information to the subsequent layer.
+In the case of a \qt{feedforward} neural network, the neurons are connected in sequential groups called layers, where each layer only receives information from the previous layer and only passes information to the subsequent layer.
 Convolutional and recurrent neural networks also exist in which the layers are not connected in series.
 A fully connected (or dense) neural network is one where every neuron in a layer is connected to every neuron on the subsequent layer, as seen in Figure~\ref{fig:neural-network-example}.
 
@@ -69,52 +69,53 @@ A fully connected (or dense) neural network is one where every neuron in a layer
 	\label{fig:neural-network-example}
 \end{figure}
 
-An efficient method to optimise (or \qt{train}) the weights in a neural network was not known until \textcite{linnainmaa1970} published his method of automatic differentiation, which was first applied to neural networks in \citeyear{werbos1982} by \textcite{werbos1982}.
-The weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
+An efficient method to optimise (or \qt{train}) the weights in a neural network was not known until \textcite{linnainmaa1970} published his method of automatic differentiation, which was first applied to neural networks in 1982 by \textcite{werbos1982}.
+To perform the backpropagation algorithm, the weights \(\vec{w} = w_1, \dots, w_N\) are randomly initialised.
 One step (called an \qt{epoch}) in the backpropagation algorithm is defined as:
 \begin{enumerate}
 	\item Input a dataset of \(n\) datapoints \(X = \vec{x}_1, \dots, \vec{x}_n\) with corresponding targets \(y_1, \dots, y_n\).
 	\item \label{itm:bp-iterate-datapoints} Repeat instructions~\ref{itm:begin-bp-loop}--\ref{itm:end-bp-loop} for each datapoint \(i = 1, \dots, n\).
 	\item \label{itm:begin-bp-loop} Use the training datapoint \(\vec{x}_i\) to make a prediction \(\hat{y}_i\).
 	\item Calculate the squared error for this datapoint \(\varepsilon_i\) by comparing the prediction \(\hat{y}_i\) to the target \(y_i\): \(\varepsilon_i = (\hat{y}_i - y_i)^2/2\).
-	\item To reduce this error, the weights must be altered, as the target is fixed and the prediction cannot be directly changed.
+	\item The neural network's weights must be altered to reduce this error, as the target is fixed and the prediction cannot be directly changed.
 	      Calculate the gradient of the error \(\Delta_j = \diffp{\varepsilon_i}/{w_j}\) with respect to each of the weights \(j = N, \dots, 1\).
 		  The error at any particular layer only depends on the output of the subsequent layer and the weights connecting those two layers.
 		  By iteratively applying the chain rule, the calculation can propagate backwards though the layers.
-	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), so a step in the direction \(-\vec{\Delta}\) will most steeply reduce the error.
-	\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step-size hyperparameter, which controls how quickly the algorithm converges.
+	\item The vector \(\vec{\Delta} = (\Delta_1, \dots, \Delta_N)\) represents the direction in \(N\)-dimensional weight-space that will produce the steepest increase in the error \(\varepsilon_i\), so a step in the direction \(-\vec{\Delta}\) will produce the largest decrease in the error.
+	\item \label{itm:end-bp-loop} Update the weights \(\vec{w} \leftarrow \vec{w} - \eta \vec{\Delta}\), where \(\eta\) is the step size hyperparameter, called the \qt{learning rate}, which controls how quickly the algorithm converges.
 \end{enumerate}
 The backpropagation algorithm will adjust the weights until either the error reaches below a certain threshold or the maximum number of epochs is reached.
 
-\reword{This type of method is called} \qt{stochastic gradient descent} (also called \qt{online gradient descent} or \qt{iterative gradient descent}).
+This is called \qt{stochastic gradient descent} (also called \qt{online gradient descent} or \qt{iterative gradient descent}).
 Each datapoint moves the weights in a slightly different direction, so the optimisation process zigzags towards the optimum, rather than taking the steepest path.
 An alternative is \qt{batch gradient descent}, where the sum of the squared errors for all the training data is calculated:
 \[ \vec{\varepsilon} = \frac{1}{2} \sum_{i = 1}^{n}\left(\hat{y}_i - y_i\right)^2. \]
-This means each epoch consists of \reword{only one very efficient step}, and so will converge in fewer epochs, however each epoch takes so long that this takes significantly longer to finish training.
-In practice, \qt{minibatches} are used, where a subsample of fixed size of the datapoints are used to train the model.
-This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more \reword{susceptible to noise}~\autocite[59]{thoma2017}.
+This means each epoch consists of only one step, but this step takes account of all the data points, and so will converge in fewer epochs, however each epoch takes so long to compute that this takes significantly longer to train.
+In practice, \qt{minibatches} are used, where the dataset is split into small groups, normally 32 datapoints or fewer, which are used to train the model.
+This allows for a balance of training time and model quality, as larger batches take longer to train and smaller batches are more susceptible to being affected by noise~\autocite[59]{thoma2017}.
 
 Estimating the parameters of a neural network using any type of gradient descent is guaranteed to find a local optimum given enough time, but is not guaranteed to converge to a global optimum.
 It is quite rare for the algorithm to get trapped in a local minimum, but a more common problem is getting stuck at saddle points where the gradient is zero~\autocite[438]{lecun2015}.
 
 \section{Deep learning} \label{sec:deep-learning}
 
-Although wider neural networks with many neurons on each layer had limited success in the 20th century, increasing the number of layers resulted in a neural network that was impractical to train using techniques and hardware of the time.
-It was only in the 1990s that training these deep neural networks became feasible, and then saw widespread success in the 21st century~\autocite[86]{schmidhuber2015}.
+Although wider neural networks with many neurons on each layer had some mixed success in the 20th century, increasing the number of layers resulted in a neural network that was impractical to train using techniques and hardware of the time.
+It was only in the 1990s that training these deep neural networks became feasible, leading to the widespread success of deep neural networks in the 21st century~\autocite[86]{schmidhuber2015}.
 Deep neural networks \qtc[438]{lecun2015}{can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details}.
 
-Making a neural network deeper is not always a good idea.
-As neural networks get deeper, they reach the \qt{vanishing gradient problem}, where the gradient at each layer gets smaller as the backpropagation algorithm gets closer to the input layers until the changes are insignificant.
+Making a neural network deeper will not always improve the model.
+As neural networks get deeper, they encounter the \qt{vanishing gradient problem}.
+This is where the gradient at each layer in the backpropagation algorithm gets smaller until there is almost no change to the weights near the input. 
 Additionally, a neural network with too many parameters for the size of the training dataset can simply \qt{remember} the training data, \ie{}, overfit and reproduce the data, which does not find any meaningful patterns.
 
 Deep learning has even made its way into consumer products.
-Many modern phones have facial recognition software built in, and \ac{AI} voice assistants are becoming more common in homes.
+Many modern phones have facial recognition software built in, AI voice assistants are becoming more common in homes and self-driving cars are starting to become commercially available, all of which use some form of machine learning.
 Deep learning is also becoming more accessible, for example with the release of Google's powerful \qt{Tensorflow} engine for deep learning~\autocite{abadi2016}, which is now available as \qt{Keras}, a user friendly package for Python~\autocite{chollet2015} and R~\autocite{allaire2018}.
 
 \section{Example}
 
-To demonstrate the possibility of using statistical methods to understand the process of deep learning, consider use a simple nonlinear function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is iid Gaussian noise \(\epsilon \distributed \normdist(0, 0.1)\).
-This simple function was chosen so that a deep neaural net would easily fit it well, and then any attempts at understanding the neural network can be easily compared to the \qt{true} function.
+To demonstrate the possibility of using statistical methods to understand the process of deep learning, consider a simple nonlinear function \(f(x) = x + 5 \sin(x) + \epsilon\), where \(\epsilon\) is iid Gaussian noise \(\epsilon \distributed \normdist(0, 0.1)\).
+This function was chosen so that a deep neural net would easily fit it well, and then any attempts at understanding the neural network can be easily compared to the \qt{true} function.
 The function only has one input and one output so that the results can be plotted on a 2-dimensional plane.
 256 evenly spread datapoints were drawn from this function, seen in Figure~\ref{fig:sin-x-dataset}.
 
@@ -127,19 +128,26 @@ The function only has one input and one output so that the results can be plotte
 
 \subsection{Training a neural network}
 
-This function was learnt using the Keras package for R \autocite{allaire2018} to create and train a neural network.
+The Keras package for R \autocite{allaire2018} was used to create and train a neural network on the dataset in Figure~\ref{fig:sin-x-dataset}.
 
 The number of hidden layers in the neural network was slowly increased from 0 (linear regression) until the fit seemed reasonable at 8 hidden layers with 10 neurons each.
 The number of neurons in each layer was kept relatively small, as this particular problem is likely to require more levels of abstraction (depth) rather than an ability to store lots of information.
 The \(\tanh\) activation function \reword{was at first chosen semi-arbitrarily due to its trigonometric-ness/trigonometric asociation/trigonometric properties?}, but after being compared to the \ac{ReLU}, sigmoid and softmax activation functions, it was determined to be the best (see Section~\ref{sec:activation-functions} for a description of each of these functions).
-A linear activation function was required on the final output neuron so that the neural network's predictions were not limited to the range of the activation function.
+A linear activation function was required for the output neuron so that the neural network's predictions were not limited to the range of the activation function.
 
 The final architecture of the neural network was a fully-connected, feedforward neural network with 8 hidden layers, each with 10 neurons and the \(\tanh\) activation function, and an output layer with a linear activation function.
 This structure has 801 parameters to optimise, the 720 weights seen in Figure~\ref{fig:final-ann-architecture} and 81 biases.
 
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=\figwidth]{final-ann-architecture}
+	\caption{The final architecture.}
+	\label{fig:final-ann-architecture}
+\end{figure}
+
 The neural network was trained using both batch gradient descent and minibatches of 32 datapoints.
-The choice of gradient descent algorithm did not make much difference to the fit, likely due to the simplicity of the function being learnt, although batch gradient descent was selected as it performed slightly better.
-The neural net was trained for 2,000 epochs to grantee that the weights had stably converged and the training had finished.
+The choice of gradient descent algorithm did not make much difference to the fit, likely due to the simplicity of the function being learnt, so minibatches were chosen.
+The neural net was trained for 2,000 epochs to ensure that the weights had stably converged and the training had finished.
 The final result of this training process is seen in Figure~\ref{fig:ann-preds}.
 
 \begin{figure}[htbp]
@@ -149,36 +157,33 @@ The final result of this training process is seen in Figure~\ref{fig:ann-preds}.
 	\label{fig:ann-preds}
 \end{figure}
 
-\begin{figure}[htbp]
-	\centering
-	\includesvg[width=\figwidth]{final-ann-architecture}
-	\caption{The final architecture.}
-	\label{fig:final-ann-architecture}
-\end{figure}
-
 \subsection{Ordering of the datapoints}
 
-The training dataset was constructed with the datapoints in order of increasing \(x\).
+The training dataset was constructed with the \(x\) values increasing.
 However, when the neural network was first trained on this dataset, the algorithm seemed to always get stuck in a local minimum, as seen in Figure~\ref{fig:compare-order-ascending}, where the fit on the right-hand side is very bad.
 When the order of the datapoints was reversed, \ie{}, the dataset was ordered with \(x\) decreasing, the opposite side of the data fitted badly, see Figure~\ref{fig:compare-order-descending}.
 
-Due to the high dimensional weight space, the surface that the gradient descent algorithm traverses has many areas with zero gradient that it cannot escape.
-Using minibatches reduces the likelihood of getting stuck because each minibatch has a different error surface, and so the algorithm will take a step in a slightly different direction for each minibatch.
+Due to the high dimensional weight space, the gradient descent algorithm must traverse a surface that has many areas with zero gradient that ae difficult to escape.
+Using minibatches reduces the likelihood of getting stuck because each minibatch has a different error surface, so the algorithm will take a step in a slightly different direction for each minibatch.
 This allows the algorithm to escape a valley in one error surface by taking a step downhill in another error surface.
-However, if the datapoints are not sorted before being fitted, each minibatch will contain a highly correlated subset of the overall data, and will therefore not be representative of the overall dataset.
-This can lead to the gradient descent algorithm taking steps that counteract each other, which can stop any progress being made.
+However, if the datapoints are not sorted before being fitted, each minibatch will contain a highly correlated subset of the overall dataset, and will therefore not be representative of the rest of the data.
+This can lead to the steps that the gradient descent algorithm takes in an epoch counteracting each other, which can stop any changes in the weights from being made.
 
 I believed that this was what was causing the bad fit seen in Figures~\ref{fig:compare-order-ascending} and \ref{fig:compare-order-descending}.
-It seemed that the datapoints in the first batches had the largest effect on the training of the model.
-To counteract this, I shuffled the datapoints before using them to train the neural network.
+It seemed that the datapoints in the first batches had the largest effect on the training of the model, and whichever batch was last to be inputted had the least effect on the fit.
+To counteract this, I randomly shuffled the datapoints before using them to train the neural network.
 This resulted in the significantly better fit seen in Figure~\ref{fig:compare-order-shuffled}.
-I also tried deterministically separating the datapoints so that the datapoint with index \(i\) was sorted into minibatch \(m = \mod(i, 8)\), where \(m = 0, \dots, 7\).
+I also tried deterministically separating the datapoints so that the datapoint with index \(i\) was sorted into minibatch \(m = i \pmod 8\), where \(m = 0, \dots, 7\).
 This way each minibatch would contain an even spread of datapoints.
 This deterministic approach also resulted in a good fit, seen in Figure~\ref{fig:compare-order-deterministic}.
 
 However, when the neural network was trained using batch gradient descent, this problem did not go away.
 Batch gradient calculates the error for all the datapoints at once, so should not be affected by the order of the datapoints.
-This lead me to discover that when Keras splits the data into a training set and a validation set, it chooses. 
+This lead me to discover that the problem was actually to do with how I was using an 80\%/20\% training/validation split to cross-validate the neural network.
+My mistake was assuming that Keras was choosing a random sample of data points for each subset, where it was actually choosing the first 80\% for the training data and holding back the remaining 20\% for the validation set.
+This meant that when the datapoints were sorted, the right-hand side was in the validation set, and so wasn't used for training.
+Similarly, when reversed, the left-hand side was in the validation set.
+Shuffled and deterministically separating the datapoints meant that the validation set was a representative sample of the dataset, and so did not bias the model.
 
 \begin{figure}[htbp]
 	\vspace*{-3cm}
@@ -207,14 +212,10 @@ This lead me to discover that when Keras splits the data into a training set and
 	\label{fig:compare-order}
 \end{figure}
 
-% \begin{figure}[htbp]
-% 	\centering
-% 	\includesvg[width=\figwidth]{compare-order}
-% 	\caption{The output of the same neural network trained on the same data but ordered differently: in order (\inordercolour), reversed (\reversedcolour) and shuffled (\shuffledcolour) compared to the true function (\truthcolour).}
-% 	\label{fig:compare-order}
-% \end{figure}
+Once the validation split was set to 0\%, all of the ordering methods produced similar results.
+The example neural network model seen in Figure~\ref{fig:ann-preds} and used from now on is one trained with this issue fixed. 
 
-\textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses this fact to improve training by starting with easier training examples and slowly working towards more difficult training examples.
+\textcite{bengio2009} developed a technique called \qt{curriculum learning} which uses the ordering of the datapoints to improve training by starting with easier training examples and slowly working towards more difficult training examples.
 In a similar way to how neural networks were inspired by biological phenomena, this was inspired by how humans are taught simple examples before moving on to harder tasks.
 
 For example, when trained on a text dataset, the algorithm was trained on only texts using the vocabulary of 5,000 most common words.
