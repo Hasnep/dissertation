@@ -54,11 +54,11 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{stepwise-regression-fit_svg-tex.pdf}}%
-    \put(0.06568829,0.13529248){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-20\end{tabular}}}}%
-    \put(0.06568829,0.24627816){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
-    \put(0.09327595,0.35726384){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.07602484,0.46824951){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
-    \put(0.07602484,0.57923519){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}20\end{tabular}}}}%
+    \put(0.06568829,0.14298314){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-20\end{tabular}}}}%
+    \put(0.06568829,0.24980599){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
+    \put(0.09327595,0.35662883){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.07602484,0.46345166){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0.07602484,0.57027449){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}20\end{tabular}}}}%
     \put(0.27347774,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
     \put(0.54568545,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.79545616,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%

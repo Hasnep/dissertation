@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'multiple-regression-fit_svg-tex.pdf' (pdf, eps, ps)
+%% Accompanies image file 'gp-resids-fit_svg-tex.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -53,16 +53,15 @@
   \begin{picture}(1,0.61804137)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{multiple-regression-fit_svg-tex.pdf}}%
-    \put(0.06568829,0.14333594){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-20\end{tabular}}}}%
-    \put(0.06568829,0.25012349){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
-    \put(0.09327595,0.35691106){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.07602484,0.46373388){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
-    \put(0.07602484,0.57052144){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}20\end{tabular}}}}%
-    \put(0.27347774,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
-    \put(0.54568545,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.79545616,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
-    \put(0.52303676,0.02822268){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{gp-resids-fit_svg-tex.pdf}}%
+    \put(0.06568829,0.14150145){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-1\end{tabular}}}}%
+    \put(0.07602484,0.2897058){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.07602484,0.43794541){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.07602484,0.58614975){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.25767305,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
+    \put(0.53587807,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.7916814,0.10008465){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0.51439357,0.02822268){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
     \put(0.04709659,0.3379313){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}}%
   \end{picture}%
 \endgroup%

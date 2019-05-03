@@ -54,26 +54,27 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{lasso-lambda_svg-tex.pdf}}%
-    \put(0.06568829,0.29453894){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.06568829,0.37973615){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.06568829,0.46493337){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.06568829,0.55013057){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(0.06568829,0.63532777){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
-    \put(0.06568829,0.72052498){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
-    \put(0.12654343,0.23837582){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-3\end{tabular}}}}%
-    \put(0.28663657,0.23837582){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-2\end{tabular}}}}%
-    \put(0.44669444,0.23837582){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-1\end{tabular}}}}%
-    \put(0.61190292,0.23837582){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.77196082,0.23837582){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.93205398,0.23837582){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.40570099,0.16651384){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\log(\lambda)$\end{tabular}}}}%
-    \put(0.04709659,0.44228466){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}estimate\end{tabular}}}}}%
-    \put(-0.03937063,0.0552459){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Term\end{tabular}}}}%
+    \put(0.06568829,0.34650396){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.06568829,0.42185848){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.06568829,0.49721303){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.06568829,0.5725676){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0.06568829,0.64792214){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0.06568829,0.72327669){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.12654343,0.2993368){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-3\end{tabular}}}}%
+    \put(0.28663657,0.2993368){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-2\end{tabular}}}}%
+    \put(0.44669444,0.2993368){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-1\end{tabular}}}}%
+    \put(0.61190292,0.2993368){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.77196082,0.2993368){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.93205398,0.2993368){\color[rgb]{0.30196078,0.30196078,0.30196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.40570099,0.22747482){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\log(\lambda)$\end{tabular}}}}%
+    \put(0.04709659,0.47276515){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}estimate\end{tabular}}}}}%
+    \put(0.13617441,0.08572639){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Term\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{lasso-lambda_svg-tex.pdf}}%
-    \put(0.15077966,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\sin(2x)$\end{tabular}}}}%
-    \put(0.38672125,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\sin(x)$\end{tabular}}}}%
-    \put(0.60537646,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\sin(x/2)$\end{tabular}}}}%
-    \put(0.84992593,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.99961199,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Intercept\end{tabular}}}}%
+    \put(0.32632471,0.1189939){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cos(2x)$\end{tabular}}}}%
+    \put(0.32632471,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cos(x)$\end{tabular}}}}%
+    \put(0.57087424,0.1189939){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cos(x/2)$\end{tabular}}}}%
+    \put(0.57087424,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\sin(x)$\end{tabular}}}}%
+    \put(0.8240669,0.1189939){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.8240669,0.05803292){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Intercept\end{tabular}}}}%
   \end{picture}%
 \endgroup%

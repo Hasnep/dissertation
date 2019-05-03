@@ -19,7 +19,7 @@ They found that each successive layer abstracts the data, but isolating the spec
 
 Sensitivity analysis has also been used to evaluate the importance of each input to a neural network in the final output, and the results visualised as a decision tree where each branch represents a range of input values~\autocite[13]{cortez2013}.
 
-\section{Multiple regression}
+\section{Multiple regression} \label{sec:multiple-regression}
 
 An ideal way to understand a deep neural network would be to find the form of a function that describes the output of the neural network.
 One way of doing this is to use multiple regression with a series of basis functions on the output of the neural network.
@@ -105,9 +105,9 @@ The \(x\) and \(\sin(x)\) terms make up the majority of the fit, and most other 
 \section{Gaussian processes}
 
 One proposed way to better understand deep learning is by using \acp{GP} to approximate the output of a deep learning algorithm.
-It has been shown that \reword{as the number of neurons in a layer of a} neural network approaches infinity, the fit of the layer approaches a \ac{GP}~\autocite{neal1996}.
+One reason for this is because it has been shown that the fit of a neuron tends to a \ac{GP} as the number of inputs approaches infinity~\autocite{neal1996}.
 
-\reword{In a similar way to how a} univariate normal distribution with a mean and variance can be generalised to a multivariate normal distribution with a mean vector and a normal vector, a \ac{GP} is the limit of extending a multivariate normal distribution to infinite dimensions, with a mean function and covariance function (sometimes also called a kernel in machine learning environments) which depends on the distance between two points.
+Similar to how a univariate normal distribution with a mean and variance can be generalised to a multivariate normal distribution with a mean vector and a normal vector, a \ac{GP} is the limit of extending a multivariate normal distribution to infinite dimensions, with a mean function and covariance function (sometimes also called a kernel in machine learning environments) which depends on the distance between two points.
 
 A random vector \(X \in \reals{}^n\) is distributed with a multivariate normal distribution in \(n\) dimensions with mean vector \(\vec{\mu} \in \reals{}^n\) and covariance matrix \(K \in \reals^{n \times n}\) if \(X \distributed \normdist(\vec{\mu},\, K)\).
 In a similar way, \(Y\) is a \ac{GP} with a mean function \(\mu\) and a covariance function \(k\) where \(k(x_1, x_2) = k(\left|x_1 - x_2\right|)\) if \(Y \distributed \gp(\mu,\, k)\).
@@ -116,30 +116,23 @@ Because a \ac{GP} is an extension of a multivariate normal distribution, any fin
 There appears to be no literature on using \acp{GP} as a way to better understand how deep learning algorithms work or as a way to understand their structure, although there has been a fierce debate over the advantages of both neural networks and \acp{GP} since at least the 1990s.
 \textcite[65--66]{rasmussen1997} gave evidence that \acp{GP} are a valid replacement for neural networks in nonlinear problems with fewer than 1000 datapoints, although due to advances in processing power, neural network algorithms and \ac{GP} techniques, this recommendation will likely have changed.
 \textcite[25]{mackay1997} gave an example of \acp{GP} being used for binary classification, in a similar way to neural networks.
-When \ac{GPR} and neural networks are compared, \reword{the main advantages mentioned} are usually faster convergence and confidence or credible intervals for the predictions, which neural networks cannot do~\autocite{herbrich2003}.
-
-
-\subsection{Using Gaussian process regression}
-\begin{todo}
-	Explain how a GP will help us understand the neural network. \\
-	GPs have statistical properties that we understand, so if we can fit a GP and then calculate these properties we can apply our knowledge to the neural network.
-\end{todo}
+The most commonly cited advantages of \acp{GP} are faster convergence and the ability to calculate confidence intervals (or credible intervals) for predictions, which neural networks cannot do~\autocite{herbrich2003}.
 
 \subsection{Using Gaussian process regression}
 
+A \ac{GP} can be fitted to the output of a neural network in the same way as the multiple regression model in Section~\ref{sec:multiple-regression}.
+\acp{GP} have well understood statistical properties such as a length-scale and robust sensitivity analysis techniques can be applied to the fit of the neural network to provide another human understandable perspective to the neural network.
+In this example, a \ac{GP} was fitted to a smaller set of 256 datapoints produced by the neural network, as the improvement to fit when using the full 1024 points did not warrant the significantly longer fitting time\footnote{Software: R 3.5.3, \qt{mlegp} package~\autocite{dancik2008}; Hardware: Intel Core i5-4210U processor, 8GB RAM}.
+The \ac{GP} was fitted with no nugget, so that it would interpolate between the points rather than smooth them, although there are likely contexts where some smoothing would be useful.
 Because \acp{GP} are very flexible, applying a \ac{GP} to the output of the neural network is likely to result in a close fit.
 
 \begin{figure}[htbp]
 	\centering
 	\includesvg[width=\figwidth]{gp-fit}
-	\caption{The fit of the \ac{GP} (\gpcolour) and the true function (\truthcolour).}
+	\caption{The fit of the \ac{GP} and 99\% confidence interval (\gpcolour) and the neural network (\nncolour). The confidence interval is so narrow that it is hidden and the fit of the \ac{GP} is so close to the neural network's fit that it can be difficult to see.}
 	\label{fig:gp-fit}
 \end{figure}
 
-The fit of the \ac{GP} is almost perfect, as expected.
+The fit of the \ac{GP} to the neural network is almost perfect.
 
-\begin{todo}
-	give some sort of quantitative explanation of how well the GP has fitted \\
-	explain how the GP can now be used
-\end{todo}
 
